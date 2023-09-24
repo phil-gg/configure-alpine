@@ -20,6 +20,22 @@ github_username="phil-gg"
 github_project="configure-alpine"
 github_branch="main"
 
+# Network test
+
+echo "Step 1: Check network connectivity"
+wget -q --spider https://raw.githubusercontent.com\
+/${github_username}\
+/${github_project}\
+/${github_branch}\
+/configure-alpine.sh
+
+if [ $? -eq 0 ]; then
+echo "Online"
+else
+echo "Offline"
+exit 101
+fi
+
 # Working directory (and create if does not exist)
 
 cd /
