@@ -32,7 +32,7 @@ cd /git/${github_username}/${github_project}
 
 # Save latest version of script to working directory
 
-wget -O configure-alpine.sh \
+wget -qO configure-alpine.sh \
 https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
