@@ -49,7 +49,7 @@ https://raw.githubusercontent.com\
 
 # Test creating file in working directory
 
-echo -ne "
+echo -ne "\
 ${runtime}
 One
 Two
