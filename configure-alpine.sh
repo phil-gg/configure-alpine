@@ -23,11 +23,11 @@ github_branch="main"
 # Network test
 
 echo "Step 1: Testing network connectivity"
-wget -q --spider https://raw.githubusercontent.com\
+wget --spider https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
 /${github_branch}\
-/configure-alpine.sh
+/configure-alpine.sh -q
 
 if [ $? -eq 0 ]; then
 echo "Online"
