@@ -58,7 +58,7 @@ Three
 
 # Get Installed version number and Installed build number from this:
 
-cat /proc/ish/verson
+cat /proc/ish/version
 
 # Get Latest version number from this:
 
