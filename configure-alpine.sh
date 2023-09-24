@@ -22,7 +22,7 @@ github_branch="main"
 
 # Network test
 
-echo "Step 1: Check network connectivity"
+echo "Step 1: Testing network connectivity"
 wget -q --spider https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
