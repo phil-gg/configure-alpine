@@ -23,11 +23,11 @@ github_branch="main"
 # Network test
 
 echo "Step 1: Testing network connectivity"
-wget --spider https://raw.githubusercontent.com\
+wget -q --spider https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
 /${github_branch}\
-/configure-alpine.sh -q
+/configure-alpine.sh 1> /dev/null
 
 if [ $? -eq 0 ]; then
 echo "Online"
@@ -42,9 +42,9 @@ cd /
 mkdir -p git
 cd /git
 mkdir -p ${github_username}
-cd /git/${github_username}
+cd ${github_username}
 mkdir -p ${github_project}
-cd /git/${github_username}/${github_project}
+cd ${github_project}
 
 # Save latest version of script to working directory
 
