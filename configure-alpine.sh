@@ -62,9 +62,9 @@ https://raw.githubusercontent.com\
 /configure-alpine.sh 2> /dev/null
 
 if [ $? -eq 0 ]; then
-echo "${greenbold}  \`configure-alpine.sh\` successfully updated${normal}"
+echo "${greenbold}  Successfully updated ‘configure-alpine.sh’${normal}"
 else
-echo "${redbold}  Updating \`configure-alpine.sh\` failed${normal}"
+echo "${redbold}  Updating ’configure-alpine.sh’ failed${normal}"
 exit 102
 fi
 
@@ -93,7 +93,7 @@ Three
 
 # Get Installed version number and Installed build number from this:
 
-cut -b 5- -d ' ' /proc/ish/version
+cut -b 5- /proc/ish/version
 
 # Get Latest version number from this:
 
