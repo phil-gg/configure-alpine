@@ -34,11 +34,10 @@ if [ "$str1" = "$str2" ]; then
 
   # Check for presence of lynx
 
-echo -e "\n${bluebold}Installing lynx${normal}"
-
 cat /etc/apk/world | grep lynx 1> /dev/null
 
 if [ $? -ne 0 ]; then
+echo -e "\n${bluebold}Installing lynx${normal}"
 apk add lynx
 fi
 
