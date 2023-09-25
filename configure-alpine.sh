@@ -95,7 +95,7 @@ Three
 
 cat /proc/ish/version -- \
 | grep Version -- \
-| cut -b 4- --
+| cut -b 5- --
 
 # Get Latest version number from this:
 
