@@ -32,8 +32,8 @@ apk add lynx
 fi
 
 lynxoutput=$(lynx -dump \
-"https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
-| grep Version )
+"https://apps.apple.com/au/app/ish-shell/id1436902243" \
+| grep "Version" )
 
 appstorelatest=$(${lynxoutput} | sed -e s/[^0-9.]+//g )
 
