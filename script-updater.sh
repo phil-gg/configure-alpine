@@ -146,4 +146,10 @@ fi
 
 echo -e "\n${bluebold}Run ‘configure-alpine.sh’${normal}"
 
+echo -e "  cd /git/${github_username}/${github_project} && ls
+  cat test.txt
+  cat lastrun-upd.txt
+  cat lastrun-conf.txt
+ "
+
 busybox sh configure-alpine.sh
