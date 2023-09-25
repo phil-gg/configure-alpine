@@ -27,14 +27,14 @@ cyanbold=$(printf '\033[96;1m')
 # Alpine version check
 
 installedversion=$(cut -b 5- /proc/ish/version \
-| cut -d "(" -f2 \
-| cut -d ")" -f1 )
+| cut -d " " -f1 )
 
 echo "Installed version number = \
 ${cyanbold}${installedversion}${normal}"
 
 installedbuild=$(cut -b 5- /proc/ish/version \
-| cut -d " " -f1 )
+| cut -d "(" -f2 \
+| cut -d ")" -f1 )
 
 echo "Installed build number = \
 ${cyanbold}${installedbuild}${normal}"
