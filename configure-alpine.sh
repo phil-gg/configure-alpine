@@ -119,17 +119,14 @@ fi
 
 # Test creating file in working directory
 
-echo -ne "\
+echo -n "\
 ${runtime}
 One
 Two
 Three
 " > test.txt
 
-# Dockerfile commented out with : '
-
-: '
-FROM --platform=linux/amd64 alpine:latest
-RUN
-ENTRYPOINT
- '
+# Dockerfile (commented out)
+# FROM --platform=linux/amd64 alpine:latest
+# RUN
+# ENTRYPOINT
