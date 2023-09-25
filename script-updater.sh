@@ -37,6 +37,9 @@ if [ "$str1" = "$str2" ]; then
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
 
+# Temporary test of non-matching version numbers
+installedversion="1.3.1"
+
 echo "Installed version = \
 ${cyanbold}${installedversion}${normal}"
 
@@ -140,5 +143,5 @@ fi
 
 echo -e "\n${bluebold}Run ‘configure-alpine.sh’${normal}"
 
-echo -e "busybox sh configure-alpine.sh
+echo -e "  busybox sh configure-alpine.sh
  "
