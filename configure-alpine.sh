@@ -93,7 +93,9 @@ Three
 
 # Get Installed version number and Installed build number from this:
 
-cat /proc/ish/version
+cat /proc/ish/version -- \
+| grep Version -- \
+| cut -b 4- --
 
 # Get Latest version number from this:
 
