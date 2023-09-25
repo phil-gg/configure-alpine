@@ -25,7 +25,8 @@ greenbold=$(printf '\033[92;1m')
 
 # Network test
 
-echo "Step 1: Testing network connectivity"
+echo "Testing network connectivity"
+
 wget -q --spider https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
@@ -49,14 +50,29 @@ cd ${github_username}
 mkdir -p ${github_project}
 cd ${github_project}
 
-# Save latest version of script to working directory
+# Save latest versions of scripts to working directory
+
+echo "Getting latest version of this script from github"
 
 wget -qO configure-alpine.sh \
 https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
 /${github_branch}\
-/configure-alpine.sh
+/configure-alpine.sh 2> /dev/null
+
+if [ $? -eq 0 ]; then
+echo "${greenbold}  `configure-alpine.sh` successfully updated${normal}"
+else
+echo "${redbold}  Updating `configure-alpine.sh` failed${normal}"
+exit 102
+fi
+
+# The above should be separate file script-updater.sh
+
+# Now run the updated script you have just downloaded
+
+# busybox sh configure-alpine.sh
 
 ################################################################################
 #
@@ -81,7 +97,9 @@ cat /proc/ish/version
 
 # Get Latest version number from this:
 
-lynx -dump "https://apps.apple.com/au/app/ish-shell/id1436902243" -- | grep Version
+lynx -dump "https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
+| grep Version -- \
+| cut 4- --
 
 # Dockerfile commented out with : '
 
