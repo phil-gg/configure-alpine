@@ -62,9 +62,9 @@ https://raw.githubusercontent.com\
 /configure-alpine.sh 2> /dev/null
 
 if [ $? -eq 0 ]; then
-echo "${greenbold}  `configure-alpine.sh` successfully updated${normal}"
+echo "${greenbold}  \`configure-alpine.sh\` successfully updated${normal}"
 else
-echo "${redbold}  Updating `configure-alpine.sh` failed${normal}"
+echo "${redbold}  Updating \`configure-alpine.sh\` failed${normal}"
 exit 102
 fi
 
