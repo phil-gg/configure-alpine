@@ -23,6 +23,22 @@ normal=$(printf '\033[0m')
 redbold=$(printf '\033[91;1m')
 greenbold=$(printf '\033[92;1m')
 
+# Alpine version check
+
+cat /etc/apk/world | grep lynx 1> /dev/null
+
+if [ $? -eq 0 ]; then
+apk add lynx
+fi
+
+appstorelatestraw=$(lynx -dump \
+"https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
+| grep Version)
+
+echo ${appstorelatestraw}
+
+# echo Latest version number
+
 # Network test
 
 echo "Testing network connectivity"
@@ -94,12 +110,6 @@ Three
 # Get Installed version number and Installed build number from this:
 
 cut -b 5- /proc/ish/version
-
-# Get Latest version number from this:
-
-lynx -dump "https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
-| grep Version -- \
-| cut -b 12- --
 
 # Dockerfile commented out with : '
 
