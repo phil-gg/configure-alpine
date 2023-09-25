@@ -99,7 +99,7 @@ cat /proc/ish/version
 
 lynx -dump "https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
 | grep Version -- \
-| cut -b 4- --
+| cut -b 12- --
 
 # Dockerfile commented out with : '
 
