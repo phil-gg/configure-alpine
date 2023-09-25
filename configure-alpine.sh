@@ -15,10 +15,13 @@
 
 # Set variables
 
-runtime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 github_username="phil-gg"
 github_project="configure-alpine"
 github_branch="main"
+runtime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+normal=$(printf '\033[0m')
+redbold=$(printf '\033[91;1m')
+greenbold=$(printf '\033[91;1m')
 
 # Network test
 
@@ -27,12 +30,12 @@ wget -q --spider https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
 /${github_branch}\
-/configure-alpine.sh 1> /dev/null
+/configure-alpine.sh 2> /dev/null
 
 if [ $? -eq 0 ]; then
-echo "Online"
+echo "${greenbold}        Online${normal}"
 else
-echo "Offline"
+echo "${redbold}        Offline${normal}"
 exit 101
 fi
 
