@@ -21,7 +21,7 @@ github_branch="main"
 runtime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 normal=$(printf '\033[0m')
 redbold=$(printf '\033[91;1m')
-greenbold=$(printf '\033[91;1m')
+greenbold=$(printf '\033[92;1m')
 
 # Network test
 
