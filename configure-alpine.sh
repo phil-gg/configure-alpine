@@ -35,7 +35,8 @@ appstorelatestraw=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
 | grep Version)
 
-echo ${appstorelatestraw}
+echo ${appstorelatestraw} \
+| sed 's/[^0-9.]+//'
 
 # echo Latest version number
 
