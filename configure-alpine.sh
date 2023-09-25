@@ -50,8 +50,7 @@ Two
 Three
 " > test.txt
 
-echo -e "  cd /git/${phil-gg}/${configure-alpine}
-  ls /git/${phil-gg}/${configure-alpine}
+echo -e "  cd /git/${github_username}/${github_project} && ls
   cat test.txt
   cat lastrun-upd.txt
   cat lastrun-conf.txt
