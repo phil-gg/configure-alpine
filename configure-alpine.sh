@@ -27,7 +27,7 @@ bluebold=$(printf '\033[94;1m')
 
 # Navigate to working directory
 
-cd /git/${phil-gg}/${configure-alpine}
+cd /git/${github_username}/${github_project}
 
 # Save last run time to working directory
 
