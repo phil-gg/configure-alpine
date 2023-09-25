@@ -31,18 +31,12 @@ if [ $? -ne 0 ]; then
 apk add lynx
 fi
 
-lynx -dump \
-"https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
-| grep Version
-
-appstorelatestraw=$(lynx -dump \
+lynxoutput=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
 | grep Version )
 
-echo "${appstorelatestraw}"
-
-appstorelatest=$(${appstorelatestraw} \
-| sed s/[^0-9.]+// )
+appstorelatest=$(${lynxoutput} \
+| sed -e 's/[^0-9.]+//g' )
 
 echo "Latest version number = ${appstorelatest}"
 
