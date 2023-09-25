@@ -31,7 +31,7 @@ echo -e "\n${bluebold}Alpine version check${normal}"
 
   # Only run this type of version check on iSH app
 
-if [$(cut -b 5- /proc/ish/version) -eq 'iSH']; then
+if [$(cut -b 1-3 /proc/ish/version) -eq 'iSH']; then
 
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
