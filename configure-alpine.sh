@@ -31,6 +31,10 @@ if [ $? -ne 0 ]; then
 apk add lynx
 fi
 
+lynx -dump \
+"https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
+| grep Version
+
 appstorelatestraw=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" -- \
 | grep Version )
