@@ -24,8 +24,6 @@ bluebold=$(printf '\033[94;1m')
 
 # Alpine version check
 
-echo -e "\n${bluebold}Alpine version check${normal}"
-
   # Only run this type of version check on iSH app
 
 str1=$(cut -b 1-3 /proc/ish/version)
@@ -33,6 +31,18 @@ str2="iSH"
 if [ "$str1" = "$str2" ]; then
 
   # Version check logic just for the iSH app
+
+# Check for presence of lynx
+
+echo -e "\n${bluebold}Installing lynx${normal}"
+
+cat /etc/apk/world | grep lynx 1> /dev/null
+
+if [ $? -ne 0 ]; then
+apk add lynx
+fi
+
+echo -e "\n${bluebold}Alpine version check${normal}"
 
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
@@ -46,14 +56,6 @@ installedbuild=$(cut -b 5- /proc/ish/version \
 
 echo "Installed build = \
 ${cyanbold}${installedbuild}${normal}"
-
-# Check for presence of lynx
-
-cat /etc/apk/world | grep lynx 1> /dev/null
-
-if [ $? -ne 0 ]; then
-apk add lynx
-fi
 
 lynxoutput=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" \
