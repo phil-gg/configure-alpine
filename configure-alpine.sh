@@ -27,7 +27,7 @@ greenbold=$(printf '\033[92;1m')
 
 cat /etc/apk/world | grep lynx 1> /dev/null
 
-if [ $? -eq 0 ]; then
+if [ $? -ne 0 ]; then
 apk add lynx
 fi
 
