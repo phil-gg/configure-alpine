@@ -27,8 +27,7 @@ bluebold=$(printf '\033[94;1m')
 
 # Alpine version check
 
-echo -e "
-${bluebold}Alpine version check${normal}"
+echo -e "\n${bluebold}Alpine version check${normal}"
 
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
@@ -61,8 +60,7 @@ echo ${lynxoutput}
 
 # Network test
 
-echo -e "
-${bluebold}Testing network connectivity${normal}"
+echo -e "\n${bluebold}Testing network connectivity${normal}"
 
 wget -q --spider https://raw.githubusercontent.com\
 /${github_username}\
