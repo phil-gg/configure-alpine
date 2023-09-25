@@ -87,10 +87,7 @@ cd ${github_project}
 
 # Save latest versions of scripts to working directory
 
-echo -e "\n\
-${bluebold}Getting latest version of this script from github${normal}"
-
-echo "Getting latest version of this script from github"
+echo -e "\n${bluebold}Update these scripts from github${normal}"
 
 wget -qO configure-alpine.sh \
 https://raw.githubusercontent.com\
