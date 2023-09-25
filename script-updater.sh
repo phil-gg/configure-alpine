@@ -146,5 +146,4 @@ fi
 
 echo -e "\n${bluebold}Run ‘configure-alpine.sh’${normal}"
 
-echo -e "  busybox sh configure-alpine.sh
- "
+busybox sh configure-alpine.sh
