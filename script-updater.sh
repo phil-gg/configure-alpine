@@ -32,7 +32,7 @@ if [ "$str1" = "$str2" ]; then
 
   # Version check logic just for the iSH app
 
-# Check for presence of lynx
+  # Check for presence of lynx
 
 echo -e "\n${bluebold}Installing lynx${normal}"
 
