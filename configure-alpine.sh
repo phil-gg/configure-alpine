@@ -52,9 +52,7 @@ lynxoutput=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" \
 | grep -- 'Version' )
 
-echo ${lynxoutput}
-
-# appstorelatest=$(${lynxoutput} | sed -e s/[^0-9.]+//g )
+echo ${lynxoutput} | sed -e 's/[^0-9.]+//g'
 
 # echo "Latest version number = ${appstorelatest}"
 
