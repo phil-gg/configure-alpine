@@ -81,7 +81,7 @@ cat /proc/ish/version
 
 # Get Latest version number from this:
 
-lynx -dump https://apps.apple.com/au/app/ish-shell/id1436902243 | grep Version
+lynx -dump "https://apps.apple.com/au/app/ish-shell/id1436902243" -- | grep Version
 
 # Dockerfile commented out with : '
 
