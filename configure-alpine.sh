@@ -33,6 +33,11 @@ cd /git/${github_username}/${github_project}
 
 echo ${runtime} > lastrun-conf.txt
 
+# Set alias commands
+  # TODO
+  # alias = update-alpine
+  # cd /git/${github_username}/${github_project} && busybox sh script-updater.sh
+
 ################################################################################
 #
 # Line wrap ruler
