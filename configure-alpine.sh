@@ -23,8 +23,12 @@ normal=$(printf '\033[0m')
 redbold=$(printf '\033[91;1m')
 greenbold=$(printf '\033[92;1m')
 cyanbold=$(printf '\033[96;1m')
+bluebold=$(printf '\033[94;1m')
 
 # Alpine version check
+
+echo "
+${bluebold}Alpine version check${normal}"
 
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
@@ -57,7 +61,8 @@ echo ${lynxoutput}
 
 # Network test
 
-echo "Testing network connectivity"
+echo "
+${bluebold}Testing network connectivity${normal}"
 
 wget -q --spider https://raw.githubusercontent.com\
 /${github_username}\
