@@ -138,7 +138,7 @@ fi
 
 # Now run configure-alpine.sh
 
-echo -e "\n${bluebold}Update these scripts from github${normal}"
+echo -e "\n${bluebold}Run ‘configure-alpine.sh’${normal}"
 
 echo -e "busybox sh configure-alpine.sh
  "
