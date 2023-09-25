@@ -33,9 +33,9 @@ wget -q --spider https://raw.githubusercontent.com\
 /configure-alpine.sh 2> /dev/null
 
 if [ $? -eq 0 ]; then
-echo "${greenbold}        Online${normal}"
+echo "${greenbold}  Online${normal}"
 else
-echo "${redbold}        Offline${normal}"
+echo "${redbold}  Offline${normal}"
 exit 101
 fi
 
