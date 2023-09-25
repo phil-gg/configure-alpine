@@ -65,6 +65,12 @@ latestversion=$(echo ${lynxoutput} | sed -r 's/[^0-9\.]+//g' $1 )
 echo "Latest version = \
 ${cyanbold}${latestversion}${normal}"
 
+if [ "$installedversion" = "$latestversion" ]; then
+    echo "${greenbold}  iSH app is up-to-date${normal}"
+else
+    echo "${redbold}  Update iSH from app store${normal}"
+fi
+
   # Version check logic for iSH running on podman
   # Add an else and then version check code here
 
