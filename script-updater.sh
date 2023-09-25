@@ -140,4 +140,5 @@ fi
 
 echo -e "\n${bluebold}Update these scripts from github${normal}"
 
-echo -e "busybox sh configure-alpine.sh\n\n"
+echo -e "busybox sh configure-alpine.sh
+ "
