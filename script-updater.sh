@@ -47,6 +47,8 @@ installedbuild=$(cut -b 5- /proc/ish/version \
 echo "Installed build = \
 ${cyanbold}${installedbuild}${normal}"
 
+# Check for presence of lynx
+
 cat /etc/apk/world | grep lynx 1> /dev/null
 
 if [ $? -ne 0 ]; then
@@ -107,6 +109,10 @@ echo ${runtime} > lastrun-upd.txt
 # Save latest versions of scripts to working directory
 
 echo -e "\n${bluebold}Update these scripts from github${normal}"
+
+# TODO: Change to git clone here
+# Only keep one latest version
+# Include check for presence of git (just like lynx above)
 
 wget -qO script-updater.sh \
 https://raw.githubusercontent.com\
