@@ -29,17 +29,21 @@ bluebold=$(printf '\033[94;1m')
 
 echo -e "\n${bluebold}Alpine version check${normal}"
 
+  # Only run this type of version check on iSH app
+
+if [$(cut -b 5- /proc/ish/version) -eq 'iSH'] then
+
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
 
-echo "Installed version number = \
+echo "Installed version = \
 ${cyanbold}${installedversion}${normal}"
 
 installedbuild=$(cut -b 5- /proc/ish/version \
 | cut -d "(" -f2 \
 | cut -d ")" -f1 )
 
-echo "Installed build number = \
+echo "Installed build = \
 ${cyanbold}${installedbuild}${normal}"
 
 cat /etc/apk/world | grep lynx 1> /dev/null
@@ -52,9 +56,15 @@ lynxoutput=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" \
 | grep -- 'Version' )
 
-echo ${lynxoutput} | sed -er 's/[^0-9\.]+//g'
+latestversion=$(echo ${lynxoutput} | sed -r 's/[^0-9\.]+//g' $1 )
 
-# echo "Latest version number = ${appstorelatest}"
+echo "Latest version = \
+${cyanbold}${latestversion}${normal}"
+
+  # Version check for iSH running on podman
+  # Add an else and then version check code here
+
+fi
 
 # Network test
 
