@@ -22,8 +22,22 @@ runtime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 normal=$(printf '\033[0m')
 redbold=$(printf '\033[91;1m')
 greenbold=$(printf '\033[92;1m')
+cyanbold=$(printf '\033[96;1m')
 
 # Alpine version check
+
+installedversion=$(cut -b 5- /proc/ish/version \
+| cut -d "(" -f2 \
+| cut -d ")" -f1 )
+
+echo "Installed version number = \
+${cyanbold}${installedversion}${normal}"
+
+installedbuild=$(cut -b 5- /proc/ish/version \
+| cut -d " " -f1 )
+
+echo "Installed build number = \
+${cyanbold}${installedbuild}${normal}"
 
 cat /etc/apk/world | grep lynx 1> /dev/null
 
@@ -37,9 +51,9 @@ lynxoutput=$(lynx -dump \
 
 echo ${lynxoutput}
 
-appstorelatest=$(${lynxoutput} | sed -e s/[^0-9.]+//g )
+# appstorelatest=$(${lynxoutput} | sed -e s/[^0-9.]+//g )
 
-echo "Latest version number = ${appstorelatest}"
+# echo "Latest version number = ${appstorelatest}"
 
 # Network test
 
@@ -108,10 +122,6 @@ One
 Two
 Three
 " > test.txt
-
-# Get Installed version number and Installed build number from this:
-
-cut -b 5- /proc/ish/version
 
 # Dockerfile commented out with : '
 
