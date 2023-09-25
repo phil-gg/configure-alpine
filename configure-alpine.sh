@@ -34,10 +34,8 @@ echo -e "\n${bluebold}Alpine version check${normal}"
 str1=$(cut -b 1-3 /proc/ish/version)
 str2="iSH"
 if [ "$str1" = "$str2" ]; then
-    echo "The strings are equal."
-else
-    echo "The strings are different."
-fi
+
+  # Version check logic just for the iSH app
 
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
@@ -67,10 +65,10 @@ latestversion=$(echo ${lynxoutput} | sed -r 's/[^0-9\.]+//g' $1 )
 echo "Latest version = \
 ${cyanbold}${latestversion}${normal}"
 
-  # Version check for iSH running on podman
+  # Version check logic for iSH running on podman
   # Add an else and then version check code here
 
-# fi
+fi
 
 # Network test
 
