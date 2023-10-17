@@ -29,9 +29,11 @@ bluebold=$(printf '\033[94;1m')
 
 cd /git/${github_username}/${github_project}
 
-# Save last run time to working directory
+# Config last run time
 
 echo ${runtime} > lastrun-conf.txt
+echo -e "\n${bluebold}Update run at${normal}"
+echo -e "  ${runtime}"
 
 # Set alias commands
   # TODO
