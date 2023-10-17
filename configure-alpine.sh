@@ -29,7 +29,7 @@ bluebold=$(printf '\033[94;1m')
 
 cd /git/${github_username}/${github_project}
 
-# Config last run time
+# Set run time for this latest ‘Config’ operation
 
 echo ${runtime} > lastrun-conf.txt
 echo -e "\n${bluebold}Config run at${normal}"
@@ -57,7 +57,8 @@ Two
 Three
 " > test.txt
 
-echo -e "  cd /git/${github_username}/${github_project} && ls
+echo -e "\
+  cd /git/${github_username}/${github_project} && ls
   cat test.txt
   cat lastrun-upd.txt
   cat lastrun-conf.txt
