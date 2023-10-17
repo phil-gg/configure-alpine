@@ -32,7 +32,7 @@ cd /git/${github_username}/${github_project}
 # Config last run time
 
 echo ${runtime} > lastrun-conf.txt
-echo -e "\n${bluebold}Update run at${normal}"
+echo -e "\n${bluebold}Config run at${normal}"
 echo -e "  ${runtime}"
 
 # Set alias commands
