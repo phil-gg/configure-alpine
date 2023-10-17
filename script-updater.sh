@@ -22,6 +22,11 @@ greenbold=$(printf '\033[92;1m')
 cyanbold=$(printf '\033[96;1m')
 bluebold=$(printf '\033[94;1m')
 
+# 
+
+echo -e "\n${bluebold}Update run at:${normal}"
+echo -e "  ${runtime}"
+
 # Network test
 
 echo -e "\n${bluebold}Testing network connectivity${normal}"
