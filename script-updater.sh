@@ -22,6 +22,23 @@ greenbold=$(printf '\033[92;1m')
 cyanbold=$(printf '\033[96;1m')
 bluebold=$(printf '\033[94;1m')
 
+# Network test
+
+echo -e "\n${bluebold}Testing network connectivity${normal}"
+
+wget -q --spider https://raw.githubusercontent.com\
+/${github_username}\
+/${github_project}\
+/${github_branch}\
+/configure-alpine.sh 2> /dev/null
+
+if [ $? -eq 0 ]; then
+echo "${greenbold}  Online${normal}"
+else
+echo "${redbold}  Offline${normal}"
+exit 101
+fi
+
 # Alpine version check
 
   # Only run this type of version check on iSH app
@@ -74,23 +91,6 @@ fi
   # Version check logic for iSH running on podman
   # TODO: Add an else and then version check code here
 
-fi
-
-# Network test
-
-echo -e "\n${bluebold}Testing network connectivity${normal}"
-
-wget -q --spider https://raw.githubusercontent.com\
-/${github_username}\
-/${github_project}\
-/${github_branch}\
-/configure-alpine.sh 2> /dev/null
-
-if [ $? -eq 0 ]; then
-echo "${greenbold}  Online${normal}"
-else
-echo "${redbold}  Offline${normal}"
-exit 101
 fi
 
 # Working directory (and create if does not exist)
