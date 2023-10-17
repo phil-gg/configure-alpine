@@ -22,11 +22,6 @@ greenbold=$(printf '\033[92;1m')
 cyanbold=$(printf '\033[96;1m')
 bluebold=$(printf '\033[94;1m')
 
-# Show run time on screen
-
-echo -e "\n${bluebold}Update run at${normal}"
-echo -e "  ${runtime}"
-
 # Network test
 
 echo -e "\n${bluebold}Testing network connectivity${normal}"
@@ -43,6 +38,12 @@ else
 echo "${redbold}  Offline${normal}"
 exit 101
 fi
+
+# Set run time for this latest ‘Update’ operation
+
+echo ${runtime} > lastrun-upd.txt
+echo -e "\n${bluebold}Update run at${normal}"
+echo -e "  ${runtime}"
 
 # Alpine version check
 
@@ -108,13 +109,9 @@ cd ${github_username}
 mkdir -p ${github_project}
 cd ${github_project}
 
-# Save last run time to working directory
-
-echo ${runtime} > lastrun-upd.txt
-
 # Save latest versions of scripts to working directory
 
-echo -e "\n${bluebold}Update these scripts from github${normal}"
+echo -e "\n${bluebold}Sync project with github${normal}"
 
 # TODO: Change to git clone here
 # Only keep one latest version
