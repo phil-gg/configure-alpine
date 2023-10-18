@@ -22,6 +22,10 @@ greenbold=$(printf '\033[92;1m')
 cyanbold=$(printf '\033[96;1m')
 bluebold=$(printf '\033[94;1m')
 
+# Now running `script-updater.sh`
+
+echo -e "\n${bluebold}Now running ‘script-updater.sh’${normal}"
+
 # Network test
 
 echo -e "\n${bluebold}Testing network connectivity${normal}"
@@ -39,9 +43,9 @@ echo "${redbold}  Offline${normal}"
 exit 101
 fi
 
-# Set run time for this latest ‘Update’ operation
+# Set run time for this latest `Update` operation
 
-echo ${runtime} > lastrun-upd.txt
+echo "${runtime}" > lastrun-upd.txt
 echo -e "\n${bluebold}Update run at${normal}"
 echo -e "  ${runtime}"
 
@@ -57,7 +61,7 @@ if [ "$str1" = "$str2" ]; then
 
   # Check for presence of lynx
 
-cat /etc/apk/world | grep lynx 1> /dev/null
+grep lynx /etc/apk/world 1> /dev/null
 
 if [ $? -ne 0 ]; then
 echo -e "\n${bluebold}Installing lynx${normal}"
@@ -83,7 +87,7 @@ lynxoutput=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" \
 | grep -- 'Version' )
 
-latestversion=$(echo ${lynxoutput} | sed -r 's/[^0-9\.]+//g' $1 )
+latestversion=$(echo "${lynxoutput}" | sed -r 's/[^0-9\.]+//g' $1 )
 
 echo "Latest version = \
 ${cyanbold}${latestversion}${normal}"
@@ -104,10 +108,10 @@ fi
 cd /
 mkdir -p git
 cd /git
-mkdir -p ${github_username}
-cd ${github_username}
-mkdir -p ${github_project}
-cd ${github_project}
+mkdir -p "${github_username}"
+cd "${github_username}"
+mkdir -p "${github_project}"
+cd "${github_project}"
 
 # Save latest versions of scripts to working directory
 
@@ -117,12 +121,18 @@ echo -e "\n${bluebold}Sync project with github${normal}"
 # Only keep one latest version
 # Include check for presence of git (just like lynx above)
 
-wget -qO script-updater.sh \
+# git init
+# git remote add origin <your-repo-url>
+# git fetch
+# git checkout main -f
+# git branch --set-upstream-to origin/main
+
+wget -qO script-updater.sh "\
 https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
 /${github_branch}\
-/script-updater.sh 2> /dev/null
+/script-updater.sh" 2> /dev/null
 
 if [ $? -eq 0 ]; then
 echo "${greenbold}  Successfully updated ‘script-updater.sh’${normal}"
@@ -131,12 +141,12 @@ echo "${redbold}  Updating ‘script-updater.sh’ failed${normal}"
 exit 102
 fi
 
-wget -qO configure-alpine.sh \
+wget -qO configure-alpine.sh "\
 https://raw.githubusercontent.com\
 /${github_username}\
 /${github_project}\
 /${github_branch}\
-/configure-alpine.sh 2> /dev/null
+/configure-alpine.sh" 2> /dev/null
 
 if [ $? -eq 0 ]; then
 echo "${greenbold}  Successfully updated ‘configure-alpine.sh’${normal}"
@@ -145,7 +155,7 @@ echo "${redbold}  Updating ‘configure-alpine.sh’ failed${normal}"
 exit 103
 fi
 
-# Now run configure-alpine.sh
+# Now running `configure-alpine.sh`
 
 echo -e "\n${bluebold}Now running ‘configure-alpine.sh’${normal}"
 
