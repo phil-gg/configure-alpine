@@ -57,6 +57,12 @@ Two
 Three
 " > test.txt
 
+# Test echo some commands to stdout
+
+echo -e "\n${bluebold}\
+Commands to locate & view files this script created\
+${normal}"
+
 echo -e "\
   cd /git/${github_username}/${github_project} && ls
   cat test.txt
