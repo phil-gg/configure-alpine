@@ -124,6 +124,12 @@ echo -e "\n${bluebold}Sync project with github${normal}"
 << '###'
 
 git init
+git remote add origin https://github.com/phil-gg/configure-alpine.git
+git fetch
+git checkout main -f
+git branch --set-upstream-to origin/main
+
+git init
 
 git remote add origin "https://github.com\
 /${github_username}\
