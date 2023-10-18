@@ -87,7 +87,7 @@ lynxoutput=$(lynx -dump \
 "https://apps.apple.com/au/app/ish-shell/id1436902243" \
 | grep -- 'Version' )
 
-latestversion=$(echo "${lynxoutput}" | sed -r 's/[^0-9\.]+//g' $1 )
+latestversion=$(echo "${lynxoutput}" | sed -r 's/[^0-9\.]+//g')
 
 echo "Latest version = \
 ${cyanbold}${latestversion}${normal}"
@@ -121,11 +121,21 @@ echo -e "\n${bluebold}Sync project with github${normal}"
 # Only keep one latest version
 # Include check for presence of git (just like lynx above)
 
-# git init
-# git remote add origin <your-repo-url>
-# git fetch
-# git checkout main -f
-# git branch --set-upstream-to origin/main
+<< '###'
+
+git init
+
+git remote add origin "https://github.com\
+/${github_username}\
+/${github_project}.git"
+
+git fetch
+
+git checkout main -f
+
+git branch --set-upstream-to "origin/${github_branch}"
+
+###
 
 wget -qO script-updater.sh "\
 https://raw.githubusercontent.com\
