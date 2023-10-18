@@ -49,11 +49,11 @@ echo "${runtime}" > lastrun-upd.txt
 echo -e "\n${bluebold}Update run at${normal}"
 echo -e "  ${runtime}"
 
-# Alpine version check
+# iSH version check
 
   # Only run this type of version check on iSH app
 
-str1=$(cut -b 1-3 /proc/ish/version)
+str1=$(cut -b 1-3 /proc/ish/version 2> /dev/null)
 str2="iSH"
 if [ "$str1" = "$str2" ]; then
 
@@ -68,7 +68,9 @@ echo -e "\n${bluebold}Installing lynx${normal}"
 apk add lynx
 fi
 
-echo -e "\n${bluebold}Alpine version check${normal}"
+  # Check version of iSH
+
+echo -e "\n${bluebold}iSH version check${normal}"
 
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
@@ -97,10 +99,7 @@ if [ "$installedversion" = "$latestversion" ]; then
 else
     echo "${redbold}  Update iSH from app store${normal}"
 fi
-
-  # Version check logic for iSH running on podman
-  # TODO: Add an else and then version check code here
-
+  # End of logic just for the iSH app
 fi
 
 # Working directory (and create if does not exist)
