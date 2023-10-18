@@ -75,14 +75,14 @@ echo -e "\n${bluebold}iSH version check${normal}"
 installedversion=$(cut -b 5- /proc/ish/version \
 | cut -d " " -f1 )
 
-echo "Installed version = \
+echo "  Installed version = \
 ${cyanbold}${installedversion}${normal}"
 
 installedbuild=$(cut -b 5- /proc/ish/version \
 | cut -d "(" -f2 \
 | cut -d ")" -f1 )
 
-echo "Installed build = \
+echo "  Installed build = \
 ${cyanbold}${installedbuild}${normal}"
 
 lynxoutput=$(lynx -dump \
@@ -91,7 +91,7 @@ lynxoutput=$(lynx -dump \
 
 latestversion=$(echo "${lynxoutput}" | sed -r 's/[^0-9\.]+//g')
 
-echo "Latest version = \
+echo "  Latest version = \
 ${cyanbold}${latestversion}${normal}"
 
 if [ "$installedversion" = "$latestversion" ]; then
