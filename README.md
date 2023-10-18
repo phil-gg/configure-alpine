@@ -4,7 +4,7 @@
 
 Configure Alpine Linux in an idempotent manner.
 
-Designed to run either on iSH app, or an Alpine Linux container.
+Designed to run either on iSH app, or to manage an Alpine Linux container.
 
 ## Bootstrap
 
