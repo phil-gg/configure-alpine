@@ -117,8 +117,11 @@ cd "${github_project}"
 echo -e "\n${bluebold}Sync project with github${normal}"
 
 # TODO: Change to git clone here
-# Only keep one latest version
+
 # Include check for presence of git (just like lynx above)
+
+# also check global init.defaultBranch config and if not set to main, set as follows:
+# git config --global init.defaultBranch main
 
 << '###'
 
