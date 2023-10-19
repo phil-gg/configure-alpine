@@ -24,7 +24,7 @@ bluebold=$(printf '\033[94;1m')
 
 # Now running `script-updater.sh`
 
-echo -e "\n${bluebold}Now running ‘script-updater.sh’${normal}"
+echo -e "\n${cyanbold}Now running ‘script-updater.sh’${normal}"
 
 # Network test
 
