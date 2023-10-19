@@ -175,6 +175,6 @@ fi
 
 # Now running `configure-alpine.sh`
 
-echo -e "\n${bluebold}Now running ‘configure-alpine.sh’${normal}"
+echo -e "\n${cyanbold}Now running ‘configure-alpine.sh’${normal}"
 
 busybox sh configure-alpine.sh
