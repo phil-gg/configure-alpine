@@ -102,6 +102,15 @@ fi
   # End of logic just for the iSH app
 fi
 
+# Check for presence of git
+
+grep git /etc/apk/world 1> /dev/null
+
+if [ $? -ne 0 ]; then
+echo -e "\n${bluebold}Installing git${normal}"
+apk add git
+fi
+
 # Working directory (and create if does not exist)
 
 cd /
