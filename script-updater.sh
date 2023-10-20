@@ -51,13 +51,11 @@ echo -e "  ${runtime}"
 
 # iSH version check
 
-  # Only run this type of version check on iSH app
+  # Only run this version check on iSH app
 
 str1=$(cut -b 1-3 /proc/ish/version 2> /dev/null)
 str2="iSH"
 if [ "$str1" = "$str2" ]; then
-
-  # Version check logic just for the iSH app
 
   # Check for presence of lynx
 
@@ -111,6 +109,14 @@ echo -e "\n${bluebold}Installing git${normal}"
 apk add git
 fi
 
+# Check for presence of git config
+
+git config --list | grep 'init.defaultbranch=main'
+
+if [ $? -ne 0 ]; then
+git config --global init.defaultbranch main
+fi
+
 # Working directory (and create if does not exist)
 
 cd /
@@ -121,18 +127,15 @@ cd "${github_username}"
 mkdir -p "${github_project}"
 cd "${github_project}"
 
-# Save latest versions of scripts to working directory
+# Sync project to working directory with git
 
 echo -e "\n${bluebold}Sync project with github${normal}"
 
-# TODO: Change to git clone here
-
-# Include check for presence of git (just like lynx above)
-
-# also check global init.defaultBranch config and if not set to main, set as follows:
-# git config --global init.defaultBranch main
+# TODO: git status check and echo status result here
 
 << '###'
+
+This is what you do when there is no git project set up yet.
 
 git init
 git remote add origin https://github.com/phil-gg/configure-alpine.git
