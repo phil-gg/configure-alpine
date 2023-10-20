@@ -131,6 +131,14 @@ cd "${github_project}"
 
 echo -e "\n${bluebold}Sync project with github${normal}"
 
+git status 2> /dev/null
+
+if [ $? -eq 128 ]; then
+echo "  .git not created yet"
+echo -e "\n${bluebold}git init${normal}"
+git init
+fi
+
 # TODO: git status check and echo status result here
 
 << '###'
