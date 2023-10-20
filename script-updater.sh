@@ -163,6 +163,8 @@ git status
 
 fi
 
+# TODO: git status check and echo status result if already up-to-date
+
 # TODO: git status check and echo status result & actions here for local behind
 
 # TODO: git status check and echo status result if you need to review git
