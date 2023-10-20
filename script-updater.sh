@@ -155,7 +155,7 @@ echo -e "\n${bluebold}git checkout main -f${normal}"
 git checkout main -f
 
 echo -e "\n${bluebold}git branch --set-upstream-to \
-\"origin/${github_branch}\"${normal}"
+origin/${github_branch}${normal}"
 git branch --set-upstream-to "origin/${github_branch}"
 
 echo -e "\n${bluebold}git status${normal}"
