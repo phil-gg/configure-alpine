@@ -158,6 +158,9 @@ echo -e "\n${bluebold}git branch --set-upstream-to \
 \"origin/${github_branch}\"${normal}"
 git branch --set-upstream-to "origin/${github_branch}"
 
+echo -e "\n${bluebold}git status${normal}"
+git status
+
 fi
 
 # TODO: git status check and echo status result & actions here for local behind
