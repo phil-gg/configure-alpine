@@ -139,7 +139,7 @@ echo "  .git not created yet"
 echo -e "\n${bluebold}git init${normal}"
 git init
 
-echo -e "\n${bluebold}git remote add origin
+echo -e "\n${bluebold}git remote add origin \
 https://github.com\
 /${github_username}\
 /${github_project}.git\
