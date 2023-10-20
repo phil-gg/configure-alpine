@@ -131,6 +131,7 @@ cd "${github_project}"
 
 echo -e "\n${bluebold}Sync project with github${normal}"
 
+git fetch &> /dev/null
 git status &> /dev/null
 
 if [ $? -eq 128 ]; then
