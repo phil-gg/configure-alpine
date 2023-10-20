@@ -111,7 +111,7 @@ fi
 
 # Check for presence of git config
 
-git config --list | grep 'init.defaultbranch=main'
+git config --list | grep -- 'init.defaultbranch=main' &> /dev/null
 
 if [ $? -ne 0 ]; then
 git config --global init.defaultbranch main
