@@ -131,39 +131,40 @@ cd "${github_project}"
 
 echo -e "\n${bluebold}Sync project with github${normal}"
 
-git status 2> /dev/null
+git status &> /dev/null
 
 if [ $? -eq 128 ]; then
 echo "  .git not created yet"
+
 echo -e "\n${bluebold}git init${normal}"
 git init
-fi
 
-# TODO: git status check and echo status result here
-
-<< '###'
-
-This is what you do when there is no git project set up yet.
-
-git init
-git remote add origin https://github.com/phil-gg/configure-alpine.git
-git fetch
-git checkout main -f
-git branch --set-upstream-to origin/main
-
-git init
-
+echo -e "\n${bluebold}git remote add origin
+https://github.com\
+/${github_username}\
+/${github_project}.git\
+${normal}"
 git remote add origin "https://github.com\
 /${github_username}\
 /${github_project}.git"
 
+echo -e "\n${bluebold}git fetch${normal}"
 git fetch
 
+echo -e "\n${bluebold}git checkout main -f${normal}"
 git checkout main -f
 
+echo -e "\n${bluebold}git branch --set-upstream-to \
+\"origin/${github_branch}\"${normal}"
 git branch --set-upstream-to "origin/${github_branch}"
 
-###
+fi
+
+# TODO: git status check and echo status result & actions here for local behind
+
+# TODO: git status check and echo status result if you need to review git
+
+<< '###'
 
 wget -qO script-updater.sh "\
 https://raw.githubusercontent.com\
@@ -192,6 +193,8 @@ else
 echo "${redbold}  Updating ‘configure-alpine.sh’ failed${normal}"
 exit 103
 fi
+
+###
 
 # Now running `configure-alpine.sh`
 
