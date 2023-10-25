@@ -69,8 +69,3 @@ echo -e "\
   cat lastrun-upd.txt
   cat lastrun-conf.txt
  "
-
-# Dockerfile (commented out)
-# FROM --platform=linux/amd64 alpine:latest
-# RUN
-# ENTRYPOINT
