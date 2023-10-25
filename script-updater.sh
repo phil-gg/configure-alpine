@@ -63,7 +63,7 @@ grep lynx /etc/apk/world 1> /dev/null
 
 if [ $? -ne 0 ]; then
 echo -e "\n${bluebold}Installing lynx${normal}"
-apk add lynx
+apk add --no-cache lynx
 fi
 
   # Check version of iSH
@@ -106,7 +106,7 @@ grep git /etc/apk/world 1> /dev/null
 
 if [ $? -ne 0 ]; then
 echo -e "\n${bluebold}Installing git${normal}"
-apk add git
+apk add --no-cache git
 fi
 
 # Check for presence of git config
