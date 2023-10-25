@@ -132,7 +132,6 @@ cd "${github_project}"
 echo -e "\n${bluebold}Sync project with github${normal}"
 
 git fetch &> /dev/null
-git status &> /dev/null
 
 if [ $? -eq 128 ]; then
 echo "  .git not created yet"
@@ -161,6 +160,10 @@ git branch --set-upstream-to "origin/${github_branch}"
 
 echo -e "\n${bluebold}git status${normal}"
 git status
+
+else
+
+git status &> /dev/null
 
 fi
 
