@@ -7,7 +7,7 @@ Configure Alpine Linux in an idempotent manner.
 Targets:
  - iSH app
  - an Alpine Linux container
- - an Alpine linux installation
+ - an Alpine Linux installation
 
 ## Bootstrap
 
