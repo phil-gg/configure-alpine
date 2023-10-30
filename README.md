@@ -5,7 +5,7 @@
 Configure Alpine Linux in an idempotent manner.
 
 Targets:
- - iSH app
+ - [iSH Shell](https://ish.app/) (_[on App Store](https://apps.apple.com/us/app/ish-shell/id1436902243)_)
  - an Alpine Linux container
  - an Alpine Linux installation
 
