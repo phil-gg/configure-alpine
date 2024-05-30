@@ -1,0 +1,56 @@
+# This section applies to pi4 family only
+[pi4]
+
+# Use more capable XHCI USB 2 controller on USB-C connector
+otg_mode=1
+
+# Set pi4 clock speeds and reserved gpu memory
+arm_freq=1750
+gpu_freq=600
+gpu_mem=128
+
+# Graphics setup settings for pi4 family
+hdmi_enable_4kp60=1
+
+# Only drive one screen on Compute Module 4 Piunora
+max_framebuffers=1
+
+# This section applies to all types of rpi
+[all]
+
+# Prevent composite from being enabled (and borking HDMI)
+enable_tvout=0
+
+# Enable HDMI even if no HDMI monitor is detected
+hdmi_force_hotplug=1
+
+# Use HDMI mode with sound
+hdmi_drive=2
+
+# Run without any overscan
+disable_overscan=1
+
+# Disable startup probe of I2C bus
+disable_poe_fan=1
+force_eeprom_read=0
+
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+
+# Piunora specific
+
+# Enable the USB port
+dtoverlay=dwc2
+
+# Setup SPI5 for using the ADC
+dtoverlay=spi5-1cs,cs0_pin=24
+
+# Enable UART on Pin 4 and 5
+dtoverlay=uart3
+
+# Enable default I2C1 for QWIIC/STEMMA QT
+dtparam=i2c_arm=on
+
+# Enable default SPI0
+dtparam=spi=on
