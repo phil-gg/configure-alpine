@@ -31,7 +31,7 @@ cd "/git/${github_username}/${github_project}"
 
 # Set run time for this latest `Config` operation
 
-echo "${runtime}" > lastrun-conf.txt
+echo "${runtime}" > lastrun-conf.log
 echo -e "\n${bluebold}Config run at${normal}"
 echo -e "  ${runtime}"
 
@@ -55,7 +55,7 @@ ${runtime}
 One
 Two
 Three
-" > test.txt
+" > test.log
 
 # Test echo some commands to stdout
 
@@ -65,7 +65,7 @@ ${normal}"
 
 echo -e "\
   cd /git/${github_username}/${github_project} && ls
-  cat test.txt
-  cat lastrun-upd.txt
-  cat lastrun-conf.txt
+  cat test.log
+  cat lastrun-upd.log
+  cat lastrun-conf.log
  "
