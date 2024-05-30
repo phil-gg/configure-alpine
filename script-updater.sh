@@ -45,7 +45,7 @@ fi
 
 # Set run time for this latest `Update` operation
 
-echo "${runtime}" > lastrun-upd.txt
+echo "${runtime}" > lastrun-upd.log
 echo -e "\n${bluebold}Update run at${normal}"
 echo -e "  ${runtime}"
 
