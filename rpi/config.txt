@@ -30,9 +30,8 @@ hdmi_drive=2
 # Run without any overscan
 disable_overscan=1
 
-# Disable startup probe of I2C bus
+# Probe I2C bus at startup, even when not using the PoE hat
 disable_poe_fan=1
-force_eeprom_read=0
 
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
