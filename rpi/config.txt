@@ -15,6 +15,14 @@ hdmi_enable_4kp60=1
 # Only drive one screen on Compute Module 4 Piunora
 max_framebuffers=1
 
+# Wifi antennae setup for CM4
+# Select antenna 1 (default). CM4 only.
+dtparam=ant1
+# Select antenna 2. CM4 only.
+# dtparam=ant2
+# Disable both antennas. CM4 only.
+# dtparam=noant
+
 # This section applies to all types of rpi
 [all]
 
