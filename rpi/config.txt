@@ -2,18 +2,19 @@
 [pi4]
 
 # Use more capable XHCI USB 2 controller on USB-C connector
-otg_mode=1
+# otg_mode=1
 
 # Set pi4 clock speeds and reserved gpu memory
-arm_freq=1750
-gpu_freq=600
+# arm_freq=1750
+# gpu_freq=600
 gpu_mem=128
 
 # Graphics setup settings for pi4 family
-hdmi_enable_4kp60=1
+hdmi_safe=1
+# hdmi_enable_4kp60=1
 
 # Only drive one screen on Compute Module 4 Piunora
-max_framebuffers=1
+max_framebuffers=2
 
 # Wifi antennae setup for CM4
 # Select antenna 1 (default). CM4 only.
