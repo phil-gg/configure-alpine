@@ -2,19 +2,20 @@
 [pi4]
 
 # Use more capable XHCI USB 2 controller on USB-C connector
-# otg_mode=1
+otg_mode=1
 
 # Set pi4 clock speeds and reserved gpu memory
-# arm_freq=1750
-# gpu_freq=600
+arm_boost=1
+arm_freq=1800
+gpu_freq=600
 gpu_mem=128
 
 # Graphics setup settings for pi4 family
-hdmi_safe=1
-# hdmi_enable_4kp60=1
+dtoverlay=vc4-fkms-v3d
+hdmi_enable_4kp60=1
 
 # Only drive one screen on Compute Module 4 Piunora
-max_framebuffers=2
+max_framebuffers=1
 
 # Wifi antennae setup for CM4
 # Select antenna 1 (default). CM4 only.
@@ -24,8 +25,37 @@ dtparam=ant1
 # Disable both antennas. CM4 only.
 # dtparam=noant
 
+# no cameras or DSI displays in my pi4 builds
+# Automatically load overlays for detected cameras (if needed)
+camera_auto_detect=0
+# Automatically load overlays for detected DSI displays (if needed)
+display_auto_detect=0
+
+# Piunora specific
+
+# Enable the USB port
+dtoverlay=dwc2
+
+# Setup SPI5 for using the ADC
+dtoverlay=spi5-1cs,cs0_pin=24
+
+# Enable UART on Pin 4 and 5
+dtoverlay=uart3
+
+# Enable default I2C1 for QWIIC/STEMMA QT
+dtparam=i2c_arm=on
+
+# Enable default SPI0
+dtparam=spi=on
+
 # This section applies to all types of rpi
 [all]
+
+# Use full firmware (not basic, cut down, or debugging)
+start_x=1
+
+# Creates a serial console on GPIO 14 and 15
+enable_uart=1
 
 # Prevent composite from being enabled (and borking HDMI)
 enable_tvout=0
@@ -44,21 +74,3 @@ disable_poe_fan=1
 
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
-
-
-# Piunora specific
-
-# Enable the USB port
-dtoverlay=dwc2
-
-# Setup SPI5 for using the ADC
-dtoverlay=spi5-1cs,cs0_pin=24
-
-# Enable UART on Pin 4 and 5
-dtoverlay=uart3
-
-# Enable default I2C1 for QWIIC/STEMMA QT
-dtparam=i2c_arm=on
-
-# Enable default SPI0
-dtparam=spi=on
