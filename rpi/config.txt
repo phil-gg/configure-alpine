@@ -7,8 +7,12 @@ otg_mode=1
 # Set pi4 clock speeds and reserved gpu memory
 arm_boost=1
 arm_freq=1800
+arm_freq_min=600
 gpu_freq=600
-gpu_mem=128
+gpu_freq_min=300
+core_freq=600
+core_freq_min=300
+gpu_mem=256
 
 # Graphics setup settings for pi4 family
 dtoverlay=vc4-fkms-v3d
