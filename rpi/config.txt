@@ -25,7 +25,7 @@ dtparam=ant1
 # Disable both antennas. CM4 only.
 # dtparam=noant
 
-# no cameras or DSI displays in my pi4 builds
+# No cameras or DSI displays in my pi4 builds
 # Automatically load overlays for detected cameras (if needed)
 camera_auto_detect=0
 # Automatically load overlays for detected DSI displays (if needed)
