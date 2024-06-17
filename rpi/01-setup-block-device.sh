@@ -54,14 +54,28 @@ sleep 1
 
 # Wipe old partition information from target block device
 
-echo -e "\n${redbold}Running ${normal} sudo sgdisk -Z ${block_device}"
+echo -e "\n${redbold}Running ${normal} sgdisk -Z ${block_device}\n"
+sgdisk -Z ${block_device}
 
-sudo sgdisk -Z ${block_device}
+# 1G (Gibibyte) "Bootfs" FAT32 partition, right at start
 
-# Partitioning scheme for block device:
-# (1) 1G (Gibibyte) "Bootfs" right at start (FAT32).
-# (2) 10G (Gibibyte) "Swapfs" +129M (Mebibytes) after Bootfs.
-# (3) "Rootfs" +129M after Swapfs and ending -129M from end of device.
+echo -e "\n${cyanbold}Create 1 GiB Bootfs${normal}"
+sgdisk -n 0:0:+1G -A 0:set:0 -c 0:"Bootfs" -t 0:ef00 ${block_device}
+
+# 10G (Gibibyte) "Swapfs" +129M (Mebibytes) after Bootfs
+
+echo -e "\n${cyanbold}Create 10 GiB Swapfs${normal}"
+sgdisk -n 0:+129M:+10G -c 0:"Swapfs" -t 0:8200 ${block_device}
+
+# "Rootfs" starts +129M after Swapfs and leaves -129M before end
+
+echo -e "\n${cyanbold}Create Rootfd${normal}"
+sgdisk -n 0:+129M:-129M -c 0:"Swapfs" -t 0:8300 ${block_device}
+
+# See the GPT partition info written to disk
+
+echo -e "\n${cyanbold}Print partition information${normal}\n"
+sgdisk -p ${block_device}
 
 # 
 
