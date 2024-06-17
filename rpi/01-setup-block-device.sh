@@ -94,7 +94,7 @@ mkfs.ext4 -L rootfs -v ${block_device}p3
 
 # Review output of lsblk
 
-echo -e "\n${redbold}Review output of ${normal}lsblk --fs\n"
+echo -e "\n${cyanbold}Review output of lsblk${normal}"
 lsblk -o name,hotplug,size,pttype,partlabel,parttypename,partflags,fstype,fsver,label
 
 # Close the root privileges if-then
