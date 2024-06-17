@@ -19,6 +19,10 @@ greenbold=$(printf '\033[92;1m')
 cyanbold=$(printf '\033[96;1m')
 bluebold=$(printf '\033[94;1m')
 
+# Warning 10 second countdown
+
+# TO-DO = Add countdown here
+
 # Partitioning scheme for block device:
 # (1) 1G (Gibibyte) "Bootfs" right at start (FAT32).
 # (2) 10G (Gibibyte) "Swapfs" +129M (Mebibytes) after Bootfs.
