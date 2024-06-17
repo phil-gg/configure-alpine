@@ -85,7 +85,7 @@ mkdosfs -F 32 -D 0x80 -i abadc0d3 -n BOOTFS -v ${block_device}p1
 # Format swapfs
 
 echo -e "\n${cyanbold}Format swapfs${normal}"
-mkswap ${block_device}p2
+mkswap -L swapfs ${block_device}p2
 
 # Format rootfs as ext4
 
