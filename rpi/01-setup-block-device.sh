@@ -90,7 +90,7 @@ mkswap ${block_device}p2
 # Format rootfs as ext4
 
 echo -e "\n${cyanbold}Format rootfs${normal}"
-mkfs.ext4 -L rootfs -v ${block_device}p2
+mkfs.ext4 -L rootfs -v ${block_device}p3
 
 # Review output of lsblk
 
