@@ -12,7 +12,7 @@
 
 # Exit script if executed without root privileges
 
-if (`whoami` != root)
+if [ "$(id -u)" -ne 0 ];
   then echo "This script requires root privileges to execute.  Exiting"
   exit
   else
