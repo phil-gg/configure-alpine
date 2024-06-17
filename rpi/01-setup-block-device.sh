@@ -57,20 +57,24 @@ sleep 1
 echo -e "\n${redbold}Running ${normal}sgdisk -Z ${block_device}\n"
 sgdisk -Z ${block_device}
 
+# Set block device partition table UUID
+
+tune2fs -U abadc0d3 ${block_device}
+
 # 1G (Gibibyte) "Bootfs" FAT32 partition, right at start
 
 echo -e "\n${cyanbold}Create 1 GiB Bootfs${normal}"
-sgdisk -n 0:0:+1G -A 0:set:0 -c 0:"Bootfs" -t 0:ef00 ${block_device}
+sgdisk -n 0:0:+1G -A 0:set:0 -c 0:"bootfs" -t 0:ef00 ${block_device}
 
 # 10G (Gibibyte) "Swapfs" +129M (Mebibytes) after Bootfs
 
 echo -e "\n${cyanbold}Create 10 GiB Swapfs${normal}"
-sgdisk -n 0:+129M:+10G -c 0:"Swapfs" -t 0:8200 ${block_device}
+sgdisk -n 0:+129M:+10G -c 0:"swapfs" -t 0:8200 ${block_device}
 
 # "Rootfs" starts +129M after Swapfs and leaves -129M before end
 
 echo -e "\n${cyanbold}Create Rootfd${normal}"
-sgdisk -n 0:+129M:-129M -c 0:"Rootfs" -t 0:8300 ${block_device}
+sgdisk -n 0:+129M:-129M -c 0:"rootfs" -t 0:8300 ${block_device}
 
 # See the GPT partition info written to disk
 
@@ -80,7 +84,7 @@ sgdisk -p ${block_device}
 # Format Bootfs as FAT32
 
 echo -e "\n${cyanbold}Format Bootfs as FAT32${normal}"
-mkfs.vfat -F 32 -D 80 -i badc0d39 -n "Bootfs" -v ${block_device}p1
+mkfs.vfat -F 32 -D 0x80 -i abadc0d3 -n bootfs -v ${block_device}p1
 
 # Review output of lsblk --fs
 
