@@ -80,7 +80,7 @@ sgdisk -p ${block_device}
 # Format Bootfs as FAT32
 
 echo -e "\n${cyanbold}Format Bootfs as FAT32${normal}"
-mkfs.vfat -F 32 -D 80 -i badc0d39 -n "Bootfs" -v
+mkfs.vfat -F 32 -D 80 -i badc0d39 -n "Bootfs" -v ${block_device}p1
 
 # Review output of lsblk --fs
 
