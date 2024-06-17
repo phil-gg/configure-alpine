@@ -54,7 +54,7 @@ sleep 1
 
 # Wipe old partition information from target block device
 
-echo -e "\n${redbold}Running ${normal} sgdisk -Z ${block_device}\n"
+echo -e "\n${redbold}Running ${normal}sgdisk -Z ${block_device}\n"
 sgdisk -Z ${block_device}
 
 # 1G (Gibibyte) "Bootfs" FAT32 partition, right at start
@@ -70,14 +70,22 @@ sgdisk -n 0:+129M:+10G -c 0:"Swapfs" -t 0:8200 ${block_device}
 # "Rootfs" starts +129M after Swapfs and leaves -129M before end
 
 echo -e "\n${cyanbold}Create Rootfd${normal}"
-sgdisk -n 0:+129M:-129M -c 0:"Swapfs" -t 0:8300 ${block_device}
+sgdisk -n 0:+129M:-129M -c 0:"Rootfs" -t 0:8300 ${block_device}
 
 # See the GPT partition info written to disk
 
-echo -e "\n${cyanbold}Print partition information${normal}\n"
+echo -e "\n${cyanbold}Print partition information${normal}"
 sgdisk -p ${block_device}
 
-# 
+# Format Bootfs as FAT32
+
+echo -e "\n${cyanbold}Format Bootfs as FAT32${normal}"
+mkfs.vfat -F 32 -D 80 -i badc0d39 -n "Bootfs" -v
+
+# Review output of lsblk --fs
+
+echo -e "\n${redbold}Review output of ${normal}lsblk --fs\n"
+lsblk --fs
 
 # Close the root privileges if-then
 
