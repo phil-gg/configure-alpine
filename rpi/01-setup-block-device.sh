@@ -29,27 +29,27 @@ bluebold=$(printf '\033[94;1m')
 # Warning 10 second countdown
 
 echo -e "\n${redbold}WARNING: About to erase ${normal}${block_device}"
-echo -e -- "10"
+echo -ne -- "10"
 sleep 1
-echo -e -- "\033[A\033[K 9"
+echo -ne "\033[A\033[K 9"
 sleep 1
-echo -e -- "\033[A\033[K 8"
+echo -ne "\033[A\033[K 8"
 sleep 1
-echo -e -- "\033[A\033[K 7"
+echo -ne "\033[A\033[K 7"
 sleep 1
-echo -e -- "\033[A\033[K 6"
+echo -ne "\033[A\033[K 6"
 sleep 1
-echo -e -- "\033[A\033[K 5"
+echo -ne "\033[A\033[K 5"
 sleep 1
-echo -e -- "\033[A\033[K 4"
+echo -ne "\033[A\033[K 4"
 sleep 1
-echo -e -- "\033[A\033[K 3"
+echo -ne "\033[A\033[K 3"
 sleep 1
-echo -e -- "\033[A\033[K 2"
+echo -ne "\033[A\033[K 2"
 sleep 1
-echo -e -- "\033[A\033[K 1"
+echo -ne "\033[A\033[K 1"
 sleep 1
-echo -e -- "\033[A\033[K 0"
+echo -ne "\033[A\033[K 0"
 sleep 1
 
 # Partitioning scheme for block device:
