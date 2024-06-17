@@ -4,7 +4,7 @@
 # Block device set-up script.
 #
 # Choice of shebang allows for execution by busybox.
-# (i.e. run this file with `busybox sh script-updater.sh`)
+# (i.e. run this file with `sudo busybox sh 01-setup-block-device.sh`)
 #
 # This shell script attempts to comply with:
 # https://google.github.io/styleguide/shellguide.html
@@ -51,6 +51,12 @@ echo -ne "\r 1 "
 sleep 1
 echo -e "\r 0"
 sleep 1
+
+# Wipe old partition information from target block device
+
+echo -e "\n${redbold}Running ${normal} sudo sgdisk -Z ${block_device}"
+
+sudo sgdisk -Z ${block_device}
 
 # Partitioning scheme for block device:
 # (1) 1G (Gibibyte) "Bootfs" right at start (FAT32).
