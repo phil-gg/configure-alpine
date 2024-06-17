@@ -15,7 +15,7 @@
 if [ "$(id -u)" -ne 0 ];
   then echo "This script requires root privileges to execute.  Exiting"
   exit
-  else
+fi
 
 # Set variables
 
@@ -96,7 +96,3 @@ mkfs.ext4 -L rootfs -v ${block_device}p3
 
 echo -e "${cyanbold}Review output of lsblk${normal}"
 lsblk -o name,hotplug,size,pttype,partlabel,parttypename,partflags,fstype,fsver,label
-
-# Close the root privileges if-then
-
-fi
