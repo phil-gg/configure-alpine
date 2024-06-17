@@ -57,23 +57,19 @@ sleep 1
 echo -e "\n${redbold}Running ${normal}sgdisk -Z ${block_device}\n"
 sgdisk -Z ${block_device}
 
-# Set block device partition table UUID
+# 1G (Gibibyte) "bootfs" FAT32 partition, right at start
 
-tune2fs -U abadc0d3 ${block_device}
-
-# 1G (Gibibyte) "Bootfs" FAT32 partition, right at start
-
-echo -e "\n${cyanbold}Create 1 GiB Bootfs${normal}"
+echo -e "\n${cyanbold}Create 1 GiB bootfs${normal}"
 sgdisk -n 0:0:+1G -A 0:set:0 -c 0:"bootfs" -t 0:ef00 ${block_device}
 
-# 10G (Gibibyte) "Swapfs" +129M (Mebibytes) after Bootfs
+# 10G (Gibibyte) "swapfs" +129M (Mebibytes) after Bootfs
 
-echo -e "\n${cyanbold}Create 10 GiB Swapfs${normal}"
+echo -e "\n${cyanbold}Create 10 GiB swapfs${normal}"
 sgdisk -n 0:+129M:+10G -c 0:"swapfs" -t 0:8200 ${block_device}
 
-# "Rootfs" starts +129M after Swapfs and leaves -129M before end
+# "rootfs" starts +129M after Swapfs and leaves -129M before end
 
-echo -e "\n${cyanbold}Create Rootfd${normal}"
+echo -e "\n${cyanbold}Create rootfs${normal}"
 sgdisk -n 0:+129M:-129M -c 0:"rootfs" -t 0:8300 ${block_device}
 
 # See the GPT partition info written to disk
@@ -81,15 +77,25 @@ sgdisk -n 0:+129M:-129M -c 0:"rootfs" -t 0:8300 ${block_device}
 echo -e "\n${cyanbold}Print partition information${normal}"
 sgdisk -p ${block_device}
 
-# Format Bootfs as FAT32
+# Format bootfs as FAT32
 
-echo -e "\n${cyanbold}Format Bootfs as FAT32${normal}"
-mkfs.vfat -F 32 -D 0x80 -i abadc0d3 -n bootfs -v ${block_device}p1
+echo -e "\n${cyanbold}Format bootfs as FAT32${normal}"
+mkdosfs -F 32 -D 0x80 -i abadc0d3 -n BOOTFS -v ${block_device}p1
 
-# Review output of lsblk --fs
+# Format swapfs
+
+echo -e "\n${cyanbold}Format swapfs${normal}"
+mkswap ${block_device}p2
+
+# Format rootfs as ext4
+
+echo -e "\n${cyanbold}Format rootfs${normal}"
+mkfs.ext4 -L rootfs -v ${block_device}p2
+
+# Review output of lsblk
 
 echo -e "\n${redbold}Review output of ${normal}lsblk --fs\n"
-lsblk --fs
+lsblk -o name,hotplug,size,pttype,partlabel,parttypename,partflags,fstype,fsver,label
 
 # Close the root privileges if-then
 
