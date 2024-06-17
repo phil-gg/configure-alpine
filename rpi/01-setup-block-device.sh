@@ -31,25 +31,26 @@ bluebold=$(printf '\033[94;1m')
 echo -e "\n${redbold}WARNING: About to erase ${normal}${block_device}"
 echo -ne "10"
 sleep 1
-echo -ne "\033[A\033[K 9"
+echo -e "\033[A\033[K 9"
 sleep 1
-echo -ne "\033[A\033[K 8"
+echo -e "\033[A\033[K 8"
 sleep 1
-echo -ne "\033[A\033[K 7"
+echo -e "\033[A\033[K 7"
 sleep 1
-echo -ne "\033[A\033[K 6"
+echo -e "\033[A\033[K 6"
 sleep 1
-echo -ne "\033[A\033[K 5"
+echo -e "\033[A\033[K 5"
 sleep 1
-echo -ne "\033[A\033[K 4"
+echo -e "\033[A\033[K 4"
 sleep 1
-echo -ne "\033[A\033[K 3"
+echo -e "\033[A\033[K 3"
 sleep 1
-echo -ne "\033[A\033[K 2"
+echo -e "\033[A\033[K 2"
 sleep 1
-echo -ne "\033[A\033[K 1"
+echo -e "\033[A\033[K 1"
 sleep 1
-echo -ne "\033[A\033[K 0"
+echo -e "\033[A\033[K 0"
+sleep 1
 
 # Partitioning scheme for block device:
 # (1) 1G (Gibibyte) "Bootfs" right at start (FAT32).
