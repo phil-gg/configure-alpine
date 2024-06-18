@@ -95,5 +95,5 @@ mkfs.ext4 -L rootfs -v ${block_device}p3
 
 # Review output of lsblk
 
-printf '%b\n' "${cyanbold}Review output of lsblk${normal}"
+printf '%b\n' "\n${cyanbold}Review output of lsblk${normal}"
 lsblk -o name,hotplug,size,pttype,partlabel,parttypename,partflags,fstype,fsver,label
