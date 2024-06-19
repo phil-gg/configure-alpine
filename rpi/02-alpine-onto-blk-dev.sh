@@ -29,14 +29,14 @@ bluebold='\033[94;1m'
 # Get (and print) Alpine download file details
 
 # shellcheck disable=SC2086  # Variables won't glob or word split here
-dlfile="$(busybox wget -qO - ${dlurl}${arch}/latest-releases.yaml \
+dlfile="$(wget -qO - ${dlurl}${arch}/latest-releases.yaml \
 | grep -om 1 alpine-rpi-[0-9.]*-aarch64.tar.gz)"
 
 # shellcheck disable=SC2086  # Variables won't glob or word split here
-sha256="$(busybox wget -qO - ${dlurl}${arch}/${dlfile}.sha256)"
+sha256="$(wget -qO - ${dlurl}${arch}/${dlfile}.sha256)"
 
 # shellcheck disable=SC2086  # Variables won't glob or word split here
-sha512="$(busybox wget -qO - ${dlurl}${arch}/${dlfile}.sha512)"
+sha512="$(wget -qO - ${dlurl}${arch}/${dlfile}.sha512)"
 
 printf "%b\n" "\n${cyanbold}Alpine download url${normal}"
 printf "%b\n" "${dlfile}"
@@ -49,14 +49,11 @@ printf "%b\n" "$(echo ${sha512} | head -c 128 | fold -w 32)"
 
 # Check for pre-existing Alpine download and download if needed
 
-printf "%b\n" "\n${cyanbold}Testing presence of this script${normal}"
-if test -e "02-alpine-onto-blk-dev.sh";
-  then printf "%b\n" "${greenbold}file exists${normal}"
-  else printf "%b\n" "${redbold}file does not exist${normal}"
-fi
-
 printf "%b\n" "\n${cyanbold}Testing presence of Alpine download${normal}"
 if test -e "${dlfile}";
-  then printf "%b\n" "${greenbold}file exists${normal}"
-  else printf "%b\n" "${redbold}file does not exist${normal}"
+  then
+    printf "%b\n" "${greenbold}file exists${normal}"
+  else
+    printf "%b\n" "${redbold}file does not exist${normal}"
+    wget -qO "${dlfile}" "${dlurl}${arch}/${dlfile}"
 fi
