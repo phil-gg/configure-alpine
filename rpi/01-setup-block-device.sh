@@ -21,10 +21,15 @@ fi
 # Set variables
 
 block_device="/dev/nvme0n1"
+# shellcheck disable=SC2034  # Okay if this variable is unused
 normal='\033[0m'
+# shellcheck disable=SC2034  # Okay if this variable is unused
 redbold='\033[91;1m'
+# shellcheck disable=SC2034  # Okay if this variable is unused
 greenbold='\033[92;1m'
+# shellcheck disable=SC2034  # Okay if this variable is unused
 cyanbold='\033[96;1m'
+# shellcheck disable=SC2034  # Okay if this variable is unused
 bluebold='\033[94;1m'
 
 # Warning 10 second countdown
@@ -96,4 +101,4 @@ mkfs.ext4 -L rootfs -v ${block_device}p3
 # Review output of lsblk
 
 printf "%b\n" "\n${cyanbold}Review output of lsblk${normal}"
-lsblk -o name,hotplug,pttype,label,fstype,fsver,size,partlabel,parttypename,partflags
+lsblk -o name,hotplug,pttype,label,fstype,fsver,size,partlabel,parttypename
