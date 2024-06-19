@@ -24,7 +24,7 @@ cyanbold='\033[96;1m'
 # shellcheck disable=SC2034  # Okay if this variable is unused
 bluebold='\033[94;1m'
 
-# Set Alpine download filename variable
+# Get (and print) Alpine download file details
 
 dlurl="$(busybox wget -qO - https://dl-cdn.alpinelinux.org\
 /alpine/latest-stable/releases/aarch64/latest-releases.yaml \
@@ -40,5 +40,7 @@ sha512="$(busybox wget -qO - https://dl-cdn.alpinelinux.org\
 
 printf "%b\n" "\n${cyanbold}Alpine download url${normal}"
 printf "%b\n" "${dlurl}"
-printf "%b\n" "SHA256 = ${sha256}"
-printf "%b\n" "SHA512 = ${sha512}"
+printf "%b\n" "SHA256:"
+printf "%b\n" "${sha256}" | fold -w 32
+printf "%b\n" "SHA512:"
+printf "%b\n" "${sha256}" | fold -w 32
