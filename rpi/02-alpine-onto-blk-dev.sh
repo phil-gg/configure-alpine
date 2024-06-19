@@ -4,19 +4,11 @@
 # Block device set-up script.
 #
 # Choice of shebang allows for execution by busybox.
-# (i.e. run this file with `sudo busybox sh 01-setup-block-device.sh`)
+# (i.e. run this file with `busybox sh 02-alpine-onto-blk-dev.sh`)
 #
 # This shell script attempts to comply with:
 # https://google.github.io/styleguide/shellguide.html
 ################################################################################
-
-# Exit script if executed without root privileges
-
-if [ "$(id -u)" -ne 0 ];
-  then
-    printf "%b\n" "This script requires root privileges to execute.  Exiting"
-    exit
-fi
 
 # Set variables
 
