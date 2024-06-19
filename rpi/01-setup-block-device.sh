@@ -61,7 +61,7 @@ sgdisk -Z ${block_device}
 # 1G (Gibibyte) "bootfs" FAT32 partition, right at start
 
 printf "%b\n" "\n${cyanbold}Create 1 GiB bootfs${normal}"
-sgdisk -n 0:0:+1G -A 0:set:0 -c 0:"bootfs" -t 0:ef00 ${block_device}
+sgdisk -n 0:0:+1G -c 0:"bootfs" -t 0:ef00 ${block_device}
 
 # 10G (Gibibyte) "swapfs" +129M (Mebibytes) after Bootfs
 
@@ -96,4 +96,4 @@ mkfs.ext4 -L rootfs -v ${block_device}p3
 # Review output of lsblk
 
 printf "%b\n" "\n${cyanbold}Review output of lsblk${normal}"
-lsblk -o name,hotplug,size,pttype,partlabel,parttypename,partflags,fstype,fsver,label
+lsblk -o name,hotplug,pttype,label,fstype,fsver,size,partlabel,parttypename,partflags
