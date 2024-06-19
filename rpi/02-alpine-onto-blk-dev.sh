@@ -55,5 +55,6 @@ if test -e "${dlfile}";
     printf "%b\n" "${greenbold}file exists${normal}"
   else
     printf "%b\n" "${redbold}file does not exist${normal}"
+    printf "%b\n" "\n${cyanbold}Downloading Alpine${normal}"
     wget -qO "${dlfile}" "${dlurl}${arch}/${dlfile}"
 fi
