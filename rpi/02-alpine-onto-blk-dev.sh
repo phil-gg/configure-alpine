@@ -30,17 +30,19 @@ dlurl="$(busybox wget -qO - https://dl-cdn.alpinelinux.org\
 /alpine/latest-stable/releases/aarch64/latest-releases.yaml \
 | grep -om 1 alpine-rpi-[0-9.]*-aarch64.tar.gz)"
 
-# shellcheck disable=SC2086  # Variable is one word with no glob chars
+# shellcheck disable=SC2086  # Variable won't glob or word split here
 sha256="$(busybox wget -qO - https://dl-cdn.alpinelinux.org\
 /alpine/latest-stable/releases/aarch64/${dlurl}.sha256)"
 
-# shellcheck disable=SC2086  # Variable is one word with no glob chars
+# shellcheck disable=SC2086  # Variable won't glob or word split here
 sha512="$(busybox wget -qO - https://dl-cdn.alpinelinux.org\
 /alpine/latest-stable/releases/aarch64/${dlurl}.sha512)"
 
 printf "%b\n" "\n${cyanbold}Alpine download url${normal}"
 printf "%b\n" "${dlurl}"
 printf "%b\n" "SHA256:"
-printf "%b\n" "$(echo ${sha256} | head -c 32)" | fold -w 32
+# shellcheck disable=SC2086  # Variable won't glob or word split here
+printf "%b\n" "$(echo ${sha256} | head -c 64)" | fold -w 32
 printf "%b\n" "SHA512:"
-printf "%b\n" "${sha512}" | fold -w 32
+# shellcheck disable=SC2086  # Variable won't glob or word split here
+printf "%b\n" "$(echo ${sha512} | head -c 128)" | fold -w 32
