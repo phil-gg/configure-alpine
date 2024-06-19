@@ -41,6 +41,6 @@ sha512="$(busybox wget -qO - https://dl-cdn.alpinelinux.org\
 printf "%b\n" "\n${cyanbold}Alpine download url${normal}"
 printf "%b\n" "${dlurl}"
 printf "%b\n" "SHA256:"
-printf "%b\n" "${sha256}" | fold -w 32
+printf "%b\n" "$(echo ${sha256} | head -c 32)" | fold -w 32
 printf "%b\n" "SHA512:"
-printf "%b\n" "${sha256}" | fold -w 32
+printf "%b\n" "${sha512}" | fold -w 32
