@@ -72,12 +72,12 @@ if test -e "${dlfile}";
     printf "%b\n" "${redbold}  File does not exist${normal}"
     printf "%b\n" "\n${cyanbold}Downloading Alpine${normal}"
     wget -O "${dlfile}" "${dlurl}${arch}/${dlfile}"
-    printf "%b" "\r"
 fi
 
 # Analyse checksum
 
-
+printf "%b\n" "\n${cyanbold}Compare Alpine download to checksum${normal}"
+echo "${sha256}" | sha256sum "${dlfile}" -c
 
 # Put additions here
 
