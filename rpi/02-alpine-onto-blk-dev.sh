@@ -30,7 +30,8 @@ bluebold='\033[94;1m'
 
 printf "%b\n" "\n${bluebold}Testing network connectivity${normal}"
 
-wget -q --spider "${dlurl}${arch}/latest-releases.yaml"\ 2> /dev/null
+# -q
+wget --spider "${dlurl}${arch}/latest-releases.yaml" # 2> /dev/null
 
 if [ $? -eq 0 ]; then
 printf "%b\n" "${greenbold}  Online${normal}"
