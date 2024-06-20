@@ -86,7 +86,6 @@ if [ $? -eq 0 ];
     printf "%b\n" "${redbold}  ERROR: sha256 mismatch${normal}"
     exit 102
 fi
-printf "%b\n" "\n${bluebold}Compare Alpine download to checksum${normal}"
 echo "${sha512}" | sha512sum -c 1> /dev/null
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
 if [ $? -eq 0 ];
