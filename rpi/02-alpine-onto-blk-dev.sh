@@ -94,10 +94,8 @@ if [ $? -eq 0 ];
     printf "%b\n" "${greenbold}  SUCCESS: sha512 matches${normal}"
   else
     printf "%b\n" "${redbold}  ERROR: sha512 mismatch${normal}"
-    exit 102
+    exit 103
 fi
-
-
 
 # Put additions here
 
