@@ -30,8 +30,7 @@ bluebold='\033[94;1m'
 
 printf "%b\n" "\n${bluebold}Testing network connectivity${normal}"
 
-# -q
-wget --spider "${dlurl}${arch}/latest-releases.yaml" # 2> /dev/null
+wget -q --spider "${dlurl}${arch}/latest-releases.yaml" 2> /dev/null
 
 if [ $? -eq 0 ]; then
 printf "%b\n" "${greenbold}  Online${normal}"
@@ -39,8 +38,6 @@ else
 printf "%b\n" "${redbold}  Offline${normal}"
 exit 101
 fi
-
-
 
 # Get (and print) Alpine download file details
 
