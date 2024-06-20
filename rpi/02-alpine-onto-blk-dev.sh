@@ -53,7 +53,7 @@ sha256="$(wget -qO - ${dlurl}${arch}/${dlfile}.sha256)"
 # shellcheck disable=SC2086  # Variables won't glob or word split here
 sha512="$(wget -qO - ${dlurl}${arch}/${dlfile}.sha512)"
 
-printf "%b\n" "\n${cyanbold}Alpine download url${normal}"
+printf "%b\n" "\n${cyanbold}Alpine download file details${normal}"
 printf "%b\n" "${dlfile}"
 printf "%b\n" "SHA256:"
 # shellcheck disable=SC2086  # Variable won't glob or word split here
@@ -76,8 +76,14 @@ fi
 
 # Analyse checksum
 
-printf "%b\n" "\n${cyanbold}Compare Alpine download to checksum${normal}"
-echo "${sha256}" | sha256sum -c
+printf "%b\n" "\n${bluebold}Compare Alpine download to checksum${normal}"
+if echo "${sha256}" | sha256sum -s -c;
+  then
+    printf "%b\n" "${greenbold}  SUCCESS: sha256 matches${normal}"
+  else
+    printf "%b\n" "${redbold}  ERROR: sha256 mismatch${normal}"
+    exit 102
+fi
 
 # Put additions here
 
