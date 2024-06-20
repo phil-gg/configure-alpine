@@ -30,11 +30,7 @@ bluebold='\033[94;1m'
 
 printf "%b\n" "\n${bluebold}Testing network connectivity${normal}"
 
-wget -q --spider https://raw.githubusercontent.com\
-/${github_username}\
-/${github_project}\
-/${github_branch}\
-/configure-alpine.sh 2> /dev/null
+wget -q --spider "${dlurl}${arch}/latest-releases.yaml"\ 2> /dev/null
 
 if [ $? -eq 0 ]; then
 printf "%b\n" "${greenbold}  Online${normal}"
@@ -68,7 +64,7 @@ printf "%b\n" "$(echo ${sha512} | head -c 128 | fold -w 32)"
 
 # Check for pre-existing Alpine download and download if needed
 
-printf "%b\n" "\n${cyanbold}Testing presence of Alpine download${normal}"
+printf "%b\n" "\n${bluebold}Testing presence of Alpine download${normal}"
 if test -e "${dlfile}";
   then
     printf "%b\n" "${greenbold}  File exists${normal}"
