@@ -56,5 +56,12 @@ if test -e "${dlfile}";
   else
     printf "%b\n" "${redbold}file does not exist${normal}"
     printf "%b\n" "\n${cyanbold}Downloading Alpine${normal}"
-    wget -qO "${dlfile}" "${dlurl}${arch}/${dlfile}"
+    wget -O "${dlfile}" "${dlurl}${arch}/${dlfile}"
 fi
+
+# Put additions here
+
+# Finally make a suggestion to clean up Alpine download file
+
+printf "%b\n" "\n${cyanbold}Remove Alpine download (not yet executed)${normal}"
+printf "%b\n" "rm ${dlfile}"
