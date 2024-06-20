@@ -77,7 +77,7 @@ fi
 # Analyse checksum
 
 printf "%b\n" "\n${cyanbold}Compare Alpine download to checksum${normal}"
-echo "${sha256}" | sha256sum "${dlfile}" -c
+echo "${sha256}" | sha256sum -c
 
 # Put additions here
 
