@@ -77,7 +77,9 @@ fi
 # Analyse checksum
 
 printf "%b\n" "\n${bluebold}Compare Alpine download to checksum${normal}"
-if echo "${sha256}" | sha256sum -s -c;
+echo "${sha256}" | sha256sum -c 1> /dev/null
+# shellcheck disable=SC2181  # Okay with doing this check indirectly
+if [ $? -eq 0 ];
   then
     printf "%b\n" "${greenbold}  SUCCESS: sha256 matches${normal}"
   else
