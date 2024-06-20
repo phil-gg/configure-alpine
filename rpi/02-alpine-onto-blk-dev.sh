@@ -32,11 +32,13 @@ printf "%b\n" "\n${bluebold}Testing network connectivity${normal}"
 
 wget -q --spider "${dlurl}${arch}/latest-releases.yaml" 2> /dev/null
 
-if [ $? -eq 0 ]; then
-printf "%b\n" "${greenbold}  Online${normal}"
-else
-printf "%b\n" "${redbold}  Offline${normal}"
-exit 101
+# shellcheck disable=SC2181  # Okay with doing this check indirectly
+if [ $? -eq 0 ];
+  then
+    printf "%b\n" "${greenbold}  Online${normal}"
+  else
+    printf "%b\n" "${redbold}  Offline${normal}"
+    exit 101
 fi
 
 # Get (and print) Alpine download file details
@@ -70,6 +72,7 @@ if test -e "${dlfile}";
     printf "%b\n" "${redbold}  File does not exist${normal}"
     printf "%b\n" "\n${cyanbold}Downloading Alpine${normal}"
     wget -O "${dlfile}" "${dlurl}${arch}/${dlfile}"
+    printf "%b" "\r"
 fi
 
 # Analyse checksum
