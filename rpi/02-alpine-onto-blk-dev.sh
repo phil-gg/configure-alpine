@@ -26,6 +26,25 @@ cyanbold='\033[96;1m'
 # shellcheck disable=SC2034  # Okay if this variable is unused
 bluebold='\033[94;1m'
 
+# Network test
+
+printf "%b\n" "\n${bluebold}Testing network connectivity${normal}"
+
+wget -q --spider https://raw.githubusercontent.com\
+/${github_username}\
+/${github_project}\
+/${github_branch}\
+/configure-alpine.sh 2> /dev/null
+
+if [ $? -eq 0 ]; then
+printf "%b\n" "${greenbold}  Online${normal}"
+else
+printf "%b\n" "${redbold}  Offline${normal}"
+exit 101
+fi
+
+
+
 # Get (and print) Alpine download file details
 
 # shellcheck disable=SC2086  # Variables won't glob or word split here
@@ -52,16 +71,20 @@ printf "%b\n" "$(echo ${sha512} | head -c 128 | fold -w 32)"
 printf "%b\n" "\n${cyanbold}Testing presence of Alpine download${normal}"
 if test -e "${dlfile}";
   then
-    printf "%b\n" "${greenbold}file exists${normal}"
+    printf "%b\n" "${greenbold}  File exists${normal}"
   else
-    printf "%b\n" "${redbold}file does not exist${normal}"
+    printf "%b\n" "${redbold}  File does not exist${normal}"
     printf "%b\n" "\n${cyanbold}Downloading Alpine${normal}"
     wget -O "${dlfile}" "${dlurl}${arch}/${dlfile}"
 fi
+
+# Analyse checksum
+
+
 
 # Put additions here
 
 # Finally make a suggestion to clean up Alpine download file
 
 printf "%b\n" "\n${cyanbold}Remove Alpine download (not yet executed)${normal}"
-printf "%b\n" "rm ${dlfile}"
+printf "%b\n" "rm ${dlfile}\n"
