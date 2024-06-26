@@ -12,11 +12,11 @@
     <stop offset="0" stop-color="#1e8e3e"/>
     <stop offset="1" stop-color="#34a853"/>
   </linearGradient>
-  <circle id="whiteoutline" cx="32" cy="32" r="27" fill="#fff"/>
+  <circle id="whiteoutline" fill="#fff" cx="32" cy="32" r="27"/>
   <path id="shadow" fill="#000" fill-opacity=".1" d="M49.689 15.689a24.042 24.042 0 0 1-34 34l8 8a27 27 0 0 0 34-34z"/>
   <path id="redsegment" fill="url(#red)" d="M53.65 19.5A25 25 0 0 0 32 7a25 25 0 0 0-21.65 12.5l10.825 18.75A12.5 12.5 0 0 1 19.5 32 12.5 12.5 0 0 1 32 19.5z"/>
   <path id="ambersegment" fill="url(#amber)" d="M32 19.5A12.5 12.5 0 0 1 44.5 32a12.5 12.5 0 0 1-1.675 6.25L32 57a25 25 0 0 0 25-25 25 25 0 0 0-3.35-12.5z"/>
   <path id="greensegment" fill="url(#green)" d="M21.175 38.25A12.5 12.5 0 0 0 32 44.5a12.5 12.5 0 0 0 10.825-6.25L32 57A25 25 0 0 1 7 32a25 25 0 0 1 3.35-12.5z"/>
-  <circle id="whitecentre" cx="32" cy="32" r="12.5" fill="#fff"/>
-  <circle id="bluecentre" cx="32" cy="32" r="10" fill="#1a73e8"/>
+  <circle id="whitecentre" fill="#fff" cx="32" cy="32" r="12.5"/>
+  <circle id="bluecentre" fill="#1a73e8" cx="32" cy="32" r="10"/>
 </svg>
