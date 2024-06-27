@@ -34,16 +34,14 @@ cyanbold='\033[96;1m'
 # shellcheck disable=SC2034  # Okay if this variable is unused
 bluebold='\033[94;1m'
 
-# Print initial info
+# Print block device info
 
 printf "%b\n" "\n${cyanbold}Your block devices:${normal}"
 lsblk -dpo name,hotplug,tran,pttype,size,vendor,model,serial,state
-printf "%b\n" "\n${cyanbold}Target block device:${normal}"
-printf "%b\n" "${bold}${block_device}${normal}"
 
 # Warning 10 second countdown
 
-printf "%b\n" "\n${redbold}WARNING: About to erase ${normal}${block_device}"
+printf "%b\n" "\n${redbold}WARNING: About to erase ${bold}${block_device}${normal}"
 printf "%b" "10 "
 sleep 1
 printf "%b" "\r 9 "
