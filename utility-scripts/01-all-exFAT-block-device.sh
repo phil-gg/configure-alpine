@@ -21,6 +21,7 @@ fi
 # Set variables
 
 block_device="/dev/sda"
+partname="USB256G"
 # shellcheck disable=SC2034  # Okay if this variable is unused
 normal='\033[0m'
 # shellcheck disable=SC2034  # Okay if this variable is unused
@@ -74,8 +75,7 @@ sgdisk -Z ${block_device}
 # Create one partition for exFAT using whole drive
 
 printf "%b\n" "\n${cyanbold}Create partition for exFAT${normal}"
-# TODO = set correct sgdisk command
-# sgdisk -n 0:0:+1G -c 0:"bootfs" -t 0:ef00 ${block_device}
+sgdisk -n 0:0:0 -c 0:"${partname}" -t 0:0700 "${block_device}"
 
 # See the GPT partition info written to disk
 
@@ -85,7 +85,7 @@ sgdisk -p ${block_device}
 # Format partition as exFAT
 
 printf "%b\n" "\n${cyanbold}Format partition as exFAT${normal}"
-# TODO = exFAT format command
+mkfs.exfat -L "${partname}" -v "${block_device}"
 
 # Review output of lsblk
 
