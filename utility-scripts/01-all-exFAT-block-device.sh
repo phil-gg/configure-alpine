@@ -41,7 +41,8 @@ lsblk -dpo name,hotplug,tran,pttype,size,vendor,model,serial,state
 
 # Warning 10 second countdown
 
-printf "%b\n" "\n${redbold}WARNING: About to erase ${bold}${block_device}${normal}"
+printf "%b\n" "\n${redbold}WARNING: About to erase \
+${normal}${bold}${block_device}${normal}"
 printf "%b" "10 "
 sleep 1
 printf "%b" "\r 9 "
