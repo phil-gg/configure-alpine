@@ -39,7 +39,7 @@ bluebold='\033[94;1m'
 printf "%b\n" "\n${cyanbold}Your block devices:${normal}"
 lsblk -dpo name,hotplug,tran,pttype,size,vendor,model,serial,state
 printf "%b\n" "\n${cyanbold}Target block device:${normal}"
-printf "%b\n" "${bold}$(block_device)${normal}"
+printf "%b\n" "${bold}${block_device}${normal}"
 
 # Warning 10 second countdown
 
