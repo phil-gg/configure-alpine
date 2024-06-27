@@ -85,7 +85,7 @@ sgdisk -p ${block_device}
 # Format partition as exFAT
 
 printf "%b\n" "\n${cyanbold}Format partition as exFAT${normal}"
-mkfs.exfat -L "${partname}" -v "${block_device}"
+mkfs.exfat -L "${partname}" -v "${block_device}1"
 
 # Review output of lsblk
 
