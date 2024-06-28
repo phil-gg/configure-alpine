@@ -45,7 +45,11 @@ fi
 
 # shellcheck disable=SC2086  # Variables won't glob or word split here
 dlfile="$(wget -qO - ${dlurl}${arch}/latest-releases.yaml \
-| grep -om 1 alpine-rpi-[0-9.]*-aarch64.tar.gz)"
+| grep -om 1 "alpine-rpi-[0-9.]*-aarch64.tar.gz")"
+
+# shellcheck disable=SC2086  # Variables won't glob or word split here
+alpinefolder="$(wget -qO - ${dlurl}${arch}/latest-releases.yaml \
+| grep -om 1 "alpine-rpi-[0-9.]*-aarch64")"
 
 # shellcheck disable=SC2086  # Variables won't glob or word split here
 sha256="$(wget -qO - ${dlurl}${arch}/${dlfile}.sha256)"
@@ -98,12 +102,12 @@ fi
 
 # Unpack Alpine download
 
-printf "%b\n" "\n${bluebold}Unpacking Alpine download${normal}"
-tar -xzvf "${dlfile}"
+printf "%b\n" "\n${cyanbold}Unpacking Alpine download${normal}"
+tar -xzvf "${dlfile}" -C "${alpinefolder}"
 
 # Install Alpine download
 
-printf "%b\n" "\n${bluebold}Installing Alpine to target block device${normal}"
+printf "%b\n" "\n${cyanbold}Installing Alpine to target block device${normal}"
 
 
 # Finally make a suggestion to clean up Alpine download file
