@@ -35,9 +35,9 @@ wget -q --spider "${dlurl}${arch}/latest-releases.yaml" 2> /dev/null
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
 if [ $? -eq 0 ];
   then
-    printf "%b\n" "${greenbold}  Online${normal}"
+    printf "%b\n" "${greenbold}Online${normal}"
   else
-    printf "%b\n" "${redbold}  Offline${normal}"
+    printf "%b\n" "${redbold}Offline${normal}"
     exit 101
 fi
 
@@ -67,9 +67,9 @@ printf "%b\n" "$(echo ${sha512} | head -c 128 | fold -w 32)"
 printf "%b\n" "\n${bluebold}Testing presence of Alpine download${normal}"
 if test -e "${dlfile}";
   then
-    printf "%b\n" "${greenbold}  File exists${normal}"
+    printf "%b\n" "${greenbold}File exists${normal}"
   else
-    printf "%b\n" "${redbold}  File does not exist${normal}"
+    printf "%b\n" "${redbold}File does not exist${normal}"
     printf "%b\n" "\n${cyanbold}Downloading Alpine${normal}"
     wget -O "${dlfile}" "${dlurl}${arch}/${dlfile}"
 fi
@@ -81,18 +81,18 @@ echo "${sha256}" | sha256sum -c 1> /dev/null
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
 if [ $? -eq 0 ];
   then
-    printf "%b\n" "\n${greenbold}SUCCESS: sha512 matches${normal}"
+    printf "%b\n" "${greenbold}SUCCESS: sha512 matches${normal}"
   else
-    printf "%b\n" "\n${redbold}ERROR: sha512 mismatch${normal}\n"
+    printf "%b\n" "${redbold}ERROR: sha512 mismatch${normal}\n"
     exit 103
 fi
 echo "${sha512}" | sha512sum -c
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
 if [ $? -eq 0 ];
   then
-    printf "%b\n" "\n${greenbold}SUCCESS: sha512 matches${normal}"
+    printf "%b\n" "${greenbold}SUCCESS: sha512 matches${normal}"
   else
-    printf "%b\n" "\n${redbold}ERROR: sha512 mismatch${normal}\n"
+    printf "%b\n" "${redbold}ERROR: sha512 mismatch${normal}\n"
     exit 103
 fi
 
