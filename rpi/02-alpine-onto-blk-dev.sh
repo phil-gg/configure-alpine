@@ -81,7 +81,7 @@ fi
 # Analyse checksum
 
 printf "%b\n" "\n${bluebold}Compare Alpine download to checksum${normal}"
-echo "${sha256}" | sha256sum -c 1> /dev/null
+echo "${sha256}" | sha256sum -c
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
 if [ $? -eq 0 ];
   then
@@ -103,6 +103,11 @@ fi
 # Unpack Alpine download
 
 printf "%b\n" "\n${cyanbold}Unpacking Alpine download${normal}"
+if [ -d "${alpinefolder}" ]
+  then
+    rm -rf "${alpinefolder}"
+fi
+mkdir "${alpinefolder}"
 tar -xzvf "${dlfile}" -C "${alpinefolder}"
 
 # Install Alpine download
