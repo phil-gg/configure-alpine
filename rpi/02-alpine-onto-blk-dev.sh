@@ -118,4 +118,5 @@ printf "%b\n" "\n${cyanbold}Installing Alpine to target block device${normal}"
 # Finally make a suggestion to clean up Alpine download file
 
 printf "%b\n" "\n${cyanbold}Remove Alpine download (not yet executed)${normal}"
-printf "%b\n" "rm ${dlfile}\n"
+# shellcheck disable=SC2086  # Variable won't glob or word split here
+printf "%b\n" "rm ${dlfile} && rm -rf ${alpinefolder}\ngit reset --hard"
