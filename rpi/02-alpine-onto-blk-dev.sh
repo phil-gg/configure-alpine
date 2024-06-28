@@ -96,7 +96,15 @@ if [ $? -eq 0 ];
     exit 103
 fi
 
-# Put additions here
+# Unpack Alpine download
+
+printf "%b\n" "\n${bluebold}Unpacking Alpine download${normal}"
+tar -xzvf "${dlfile}"
+
+# Install Alpine download
+
+printf "%b\n" "\n${bluebold}Installing Alpine to target block device${normal}"
+
 
 # Finally make a suggestion to clean up Alpine download file
 
