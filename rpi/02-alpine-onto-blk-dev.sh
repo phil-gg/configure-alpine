@@ -109,9 +109,14 @@ if [ -d "${alpinefolder}" ]
 fi
 mkdir "${alpinefolder}"
 tar -xzvf "${dlfile}" -C "${alpinefolder}"
+
+# Update pi boot config files
+
 # shellcheck disable=SC2086  # Variable won't glob or word split here
 rm ./${alpinefolder}/config.txt
+# shellcheck disable=SC2086  # Variable won't glob or word split here
 cp ./config.txt ./${alpinefolder}/config.txt
+# shellcheck disable=SC2086  # Variable won't glob or word split here
 cp ./config.txt ./${alpinefolder}/usercfg.txt
 
 # Install Alpine download
