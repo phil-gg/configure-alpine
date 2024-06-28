@@ -109,6 +109,10 @@ if [ -d "${alpinefolder}" ]
 fi
 mkdir "${alpinefolder}"
 tar -xzvf "${dlfile}" -C "${alpinefolder}"
+# shellcheck disable=SC2086  # Variable won't glob or word split here
+rm ./${alpinefolder}/config.txt
+cp ./config.txt ./${alpinefolder}/config.txt
+cp ./config.txt ./${alpinefolder}/usercfg.txt
 
 # Install Alpine download
 
@@ -119,4 +123,4 @@ printf "%b\n" "\n${cyanbold}Installing Alpine to target block device${normal}"
 
 printf "%b\n" "\n${cyanbold}Remove Alpine download (not yet executed)${normal}"
 # shellcheck disable=SC2086  # Variable won't glob or word split here
-printf "%b\n" "rm ${dlfile} && rm -rf ${alpinefolder}\ngit reset --hard"
+printf "%b\n" "rm ${dlfile} && rm -rf ${alpinefolder}\ngit reset --hard\n"
