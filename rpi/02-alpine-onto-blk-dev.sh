@@ -81,18 +81,18 @@ echo "${sha256}" | sha256sum -c 1> /dev/null
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
 if [ $? -eq 0 ];
   then
-    printf "%b\n" "${greenbold}  SUCCESS: sha256 matches${normal}"
+    printf "%b\n" "\n${greenbold}SUCCESS: sha512 matches${normal}"
   else
-    printf "%b\n" "${redbold}  ERROR: sha256 mismatch${normal}"
-    exit 102
+    printf "%b\n" "\n${redbold}ERROR: sha512 mismatch${normal}\n"
+    exit 103
 fi
 echo "${sha512}" | sha512sum -c
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
 if [ $? -eq 0 ];
   then
-    printf "%b\n" "\n${greenbold}  SUCCESS: sha512 matches${normal}"
+    printf "%b\n" "\n${greenbold}SUCCESS: sha512 matches${normal}"
   else
-    printf "%b\n" "\n${redbold}  ERROR: sha512 mismatch${normal}\n"
+    printf "%b\n" "\n${redbold}ERROR: sha512 mismatch${normal}\n"
     exit 103
 fi
 
