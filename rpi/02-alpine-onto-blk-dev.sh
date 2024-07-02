@@ -119,10 +119,16 @@ cp ./config.txt ./${alpinefolder}/config.txt
 # shellcheck disable=SC2086  # Variable won't glob or word split here
 cp ./config.txt ./${alpinefolder}/usercfg.txt
 
+# Mount nvme drive
+
+printf "%b\n" "\n${cyanbold}Mount target block device${normal}"
+sudo mkdir -p /mnt/BOOTFS
+sudo mount "${block_device}" /mnt/BOOTFS
+
 # Install Alpine download
 
 printf "%b\n" "\n${cyanbold}Installing Alpine to target block device${normal}"
-
+cp -a "${alpinefolder}/." /mnt/BOOTFS
 
 # Finally make a suggestion to clean up Alpine download file
 
