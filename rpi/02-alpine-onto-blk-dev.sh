@@ -88,7 +88,7 @@ if [ $? -eq 0 ];
     printf "%b\n" "${greenbold}SUCCESS: sha512 matches${normal}"
   else
     printf "%b\n" "${redbold}ERROR: sha512 mismatch${normal}\n"
-    exit 103
+    exit 102
 fi
 echo "${sha512}" | sha512sum -c
 # shellcheck disable=SC2181  # Okay with doing this check indirectly
