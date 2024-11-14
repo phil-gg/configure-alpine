@@ -78,3 +78,6 @@ disable_poe_fan=1
 
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
+
+# Command Queueing enable for A2 microSD card
+dtparam=sd_cqe
